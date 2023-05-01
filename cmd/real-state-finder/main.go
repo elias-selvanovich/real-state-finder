@@ -18,12 +18,14 @@ func main() {
 	accessTokenFlag := flag.String("access-token", "", "access token for meli api")
 	searchResultLimitFlag := flag.Int("search-result-limit", 2, "Limit of the search result results")
 	commandFlag := flag.String("command", "search", "Type of command. Available options: search / print")
+	maxOffsetFlag := flag.Int("max-offset", 5, "Maximum offset to search")
 
 	flag.Parse()
 
 	accessToken := *accessTokenFlag
 	searchResultLimit := *searchResultLimitFlag
 	command := *commandFlag
+	maxOffset := *maxOffsetFlag
 
 	if accessToken == "" {
 		panic("access token can't be empty")
@@ -31,7 +33,7 @@ func main() {
 
 	printHeader()
 
-	api := meli.NewApi(accessToken, searchResultLimit)
+	api := meli.NewApi(accessToken, searchResultLimit, maxOffset)
 
 	switch command {
 	case CommandSearch:

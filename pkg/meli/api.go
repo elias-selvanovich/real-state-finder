@@ -47,10 +47,11 @@ type Api interface {
 type api struct {
 	accessToken       string
 	searchResultLimit int
+	maxOffset         int
 }
 
-func NewApi(a string, l int) Api {
-	return &api{a, l}
+func NewApi(a string, l int, m int) Api {
+	return &api{a, l, m}
 }
 
 func (a *api) GetCountry(countryId string) (*entities.Country, error) {
@@ -96,8 +97,8 @@ func (a *api) GetRealState(offset int) ([]entities.RealState, error) {
 	loopCount := totalResults / a.searchResultLimit
 
 	// Let's limit the loop count to 5 for now
-	if loopCount > 5 {
-		loopCount = 5
+	if loopCount > a.maxOffset {
+		loopCount = a.maxOffset
 	}
 
 	for i := 0; i < loopCount; i++ {

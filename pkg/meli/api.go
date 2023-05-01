@@ -1,10 +1,14 @@
 package meli
 
 import (
+	"bufio"
+	"bytes"
 	"encoding/json"
 	"fmt"
+	"html/template"
 	"io/ioutil"
 	"net/http"
+	"os"
 	"real-state-finder/pkg/entities"
 	"strconv"
 	"strings"
@@ -37,6 +41,7 @@ type Api interface {
 	GetRealState(offset int) ([]entities.RealState, error)
 	CmdSearch(offset int) error
 	CmdRead() error
+	CmdGenerateHtml() error
 }
 
 type api struct {
@@ -258,13 +263,7 @@ func saveToFile(filename string, rs []entities.RealState) error {
 }
 
 func (a *api) CmdRead() error {
-	var realState []entities.RealState
-	bArr, err := ioutil.ReadFile(realStateFile)
-	if err != nil {
-		return err
-	}
-
-	err = json.Unmarshal(bArr, &realState)
+	realState, err := readFromFile(realStateFile)
 	if err != nil {
 		return err
 	}
@@ -273,5 +272,51 @@ func (a *api) CmdRead() error {
 		rs.Print()
 	}
 
+	return nil
+}
+
+func readFromFile(filename string) ([]entities.RealState, error) {
+	var realState []entities.RealState
+	bArr, err := ioutil.ReadFile(realStateFile)
+	if err != nil {
+		return nil, err
+	}
+
+	err = json.Unmarshal(bArr, &realState)
+	if err != nil {
+		return nil, err
+	}
+
+	return realState, nil
+}
+
+func (a *api) CmdGenerateHtml() error {
+	simpleRealState := make([]entities.SimpleRealState, 0)
+	realStateList, err := readFromFile(realStateFile)
+	if err != nil {
+		return err
+	}
+
+	for _, rs := range realStateList {
+		simpleRealState = append(simpleRealState, rs.ToSimpleRealState())
+	}
+
+	allFiles := []string{"content.tmpl", "footer.tmpl", "header.tmpl", "page.tmpl"}
+
+	var allPaths []string
+
+	for _, tmpl := range allFiles {
+		allPaths = append(allPaths, "./templates/"+tmpl)
+	}
+
+	templates := template.Must(template.New("").ParseFiles(allPaths...))
+
+	var processed bytes.Buffer
+	templates.ExecuteTemplate(&processed, "page", simpleRealState)
+
+	f, _ := os.Create("./index.html")
+	w := bufio.NewWriter(f)
+	w.WriteString(string(processed.Bytes()))
+	w.Flush()
 	return nil
 }

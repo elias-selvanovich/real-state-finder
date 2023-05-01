@@ -9,15 +9,9 @@ import (
 	"real-state-finder/pkg/meli"
 )
 
-const Rooms = "ROOMS"
-const CoveredArea = "COVERED_AREA"
-const TotalArea = "TOTAL_AREA"
-const CurrencyDollar = "USD"
-const RealStateFile = "real_state.json"
-const DroppedDueToUsdFile = "dropped_usd.json"
-const DroppedDueToAmbientsFile = "dropped_file.json"
 const CommandSearch = "search"
 const CommandRead = "read"
+const CommandGenerateHtml = "generate-html"
 
 func main() {
 
@@ -48,6 +42,12 @@ func main() {
 		break
 	case CommandRead:
 		err := api.CmdRead()
+		if err != nil {
+			panic(err)
+		}
+		break
+	case CommandGenerateHtml:
+		err := api.CmdGenerateHtml()
 		if err != nil {
 			panic(err)
 		}

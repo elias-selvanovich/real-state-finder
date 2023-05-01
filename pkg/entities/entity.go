@@ -110,3 +110,35 @@ func (rs *RealState) Print() {
 	fmt.Println(rs.Permalink)
 
 }
+
+func (rs *RealState) ToSimpleRealState() SimpleRealState {
+	ac := accounting.Accounting{Symbol: "$", Precision: 2}
+	address := "Not Specified"
+	neighborhood := "Not Specified"
+	if rs.Location != nil {
+		address = rs.Location.AddressLine
+		neighborhood = rs.Location.Neighborhood.Name
+	}
+
+	return SimpleRealState{
+		Title:        rs.Title,
+		Ambients:     rs.GetAttributeValue(Rooms),
+		CoveredArea:  rs.GetAttributeValue(CoveredArea),
+		TotalArea:    rs.GetAttributeValue(TotalArea),
+		Address:      address,
+		Neighborhood: neighborhood,
+		Price:        ac.FormatMoney(rs.Price),
+		Permalink:    rs.Permalink,
+	}
+}
+
+type SimpleRealState struct {
+	Title        string
+	Ambients     string
+	CoveredArea  string
+	TotalArea    string
+	Neighborhood string
+	Address      string
+	Price        string
+	Permalink    string
+}

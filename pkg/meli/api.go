@@ -22,7 +22,9 @@ const methodCity = "classified_locations/cities/$CITY_ID"
 const authorizationKey = "Authorization"
 const realStateFile = "real_state.json"
 const droppedDueToUsdFile = "dropped_usd.json"
-const droppedDueToAmbientsFile = "dropped_file.json"
+const droppedDueToAmbientsFile = "dropped_ambients.json"
+const droppedDueToPriceFile = "dropped_price.json"
+const droppedDueToTotalAreaFile = "dropped_total_area.json"
 
 // Consts for SearchAPI
 const (
@@ -48,10 +50,14 @@ type api struct {
 	accessToken       string
 	searchResultLimit int
 	maxOffset         int
+	minPrice          int
+	maxPrice          int
+	minAmbients       int
+	minTotalArea      int
 }
 
-func NewApi(a string, l int, m int) Api {
-	return &api{a, l, m}
+func NewApi(a string, l int, m int, minP int, maxP int, minA int, minT int) Api {
+	return &api{a, l, m, minP, maxP, minA, minT}
 }
 
 func (a *api) GetCountry(countryId string) (*entities.Country, error) {
@@ -198,7 +204,7 @@ func (a *api) doRequest(uri string) ([]byte, error) {
 }
 
 func (a *api) CmdSearch(offset int) error {
-	var droppedUsdList, droppedAmbientsList, realStateList []entities.RealState
+	var droppedUsdList, droppedAmbientsList, droppedPriceList, droppedTotalAreaList, realStateList []entities.RealState
 
 	realStates, err := a.GetRealState(0) // Start the recursive function from 0
 	fmt.Println(fmt.Sprintf("Found %d results", len(realStates)))
@@ -206,25 +212,32 @@ func (a *api) CmdSearch(offset int) error {
 		return err
 	}
 
-	droppedBecauseUsd := 0
-	droppedBecauseLessThanDesiredAmbients := 0
-
 	for _, rs := range realStates {
 		ambients, err := strconv.Atoi(rs.GetAttributeValue(entities.Rooms))
 		if err != nil {
 			fmt.Println("ambients is not int")
 		}
 
+		totalArea := int(rs.GetValueStruct(entities.TotalArea))
+
 		// If currency of the item is in dollars we don't care about it
 		if rs.CurrencyId == entities.CurrencyDollar {
-			droppedBecauseUsd++
 			droppedUsdList = append(droppedUsdList, rs)
 			continue
 		}
 
-		if ambients < 3 {
-			droppedBecauseLessThanDesiredAmbients++
+		// If price is less than min price or greater than max price then drop it
+		if int(rs.Price) < a.minPrice || int(rs.Price) > a.maxPrice {
+			droppedPriceList = append(droppedPriceList, rs)
+		}
+
+		if ambients < a.minAmbients {
 			droppedAmbientsList = append(droppedAmbientsList, rs)
+			continue
+		}
+
+		if totalArea < a.minTotalArea {
+			droppedTotalAreaList = append(droppedTotalAreaList, rs)
 			continue
 		}
 
@@ -236,7 +249,7 @@ func (a *api) CmdSearch(offset int) error {
 
 	fmt.Println()
 	fmt.Println()
-	fmt.Println(fmt.Sprintf("Dropped %d due to USD, %d due to less than desired ambients out of %d found.", droppedBecauseUsd, droppedBecauseLessThanDesiredAmbients, len(realStates)))
+	fmt.Println(fmt.Sprintf("Dropped %d due to USD, %d due to less than desired ambients, %d due to price, %d due to TotalArea out of %d found.", len(droppedUsdList), len(droppedAmbientsList), len(droppedPriceList), len(droppedTotalAreaList), len(realStates)))
 	fmt.Println()
 	fmt.Println()
 
@@ -244,6 +257,8 @@ func (a *api) CmdSearch(offset int) error {
 	saveToFile(realStateFile, realStateList)
 	saveToFile(droppedDueToUsdFile, droppedUsdList)
 	saveToFile(droppedDueToAmbientsFile, droppedAmbientsList)
+	saveToFile(droppedDueToPriceFile, droppedPriceList)
+	saveToFile(droppedDueToTotalAreaFile, droppedTotalAreaList)
 
 	return nil
 }

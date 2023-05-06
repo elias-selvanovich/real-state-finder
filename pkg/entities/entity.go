@@ -63,15 +63,30 @@ type Neighborhood struct {
 }
 
 type Attribute struct {
-	Id     string           `json:"id"`
-	Name   string           `json:"name"`
-	Value  string           `json:"value_name"`
-	Values []AttributeValue `json:"values"`
+	Id          string           `json:"id"`
+	Name        string           `json:"name"`
+	Value       string           `json:"value_name"`
+	Values      []AttributeValue `json:"values"`
+	ValueStruct *ValueStruct     `json:"value_struct"`
+}
+
+type ValueStruct struct {
+	Number float64 `json:"number"`
+	Unit   string  `json:"unit"`
 }
 
 type AttributeValue struct {
 	Id   string `json:"id"`
 	Name string `json:"name"`
+}
+
+func (rs *RealState) GetValueStruct(attrName string) float64 {
+	for _, attr := range rs.Attributes {
+		if attr.Id == attrName && attr.ValueStruct != nil {
+			return attr.ValueStruct.Number
+		}
+	}
+	return 0
 }
 
 func (rs *RealState) GetAttributeValue(attrName string) string {

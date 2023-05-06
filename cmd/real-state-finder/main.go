@@ -19,6 +19,10 @@ func main() {
 	searchResultLimitFlag := flag.Int("search-result-limit", 2, "Limit of the search result results")
 	commandFlag := flag.String("command", "search", "Type of command. Available options: search / print")
 	maxOffsetFlag := flag.Int("max-offset", 5, "Maximum offset to search")
+	minPriceFlag := flag.Int("min-price", 150000, "Min Price to search")
+	maxPriceFlag := flag.Int("max-price", 250000, "Max Price to search")
+	minAmbientsFlag := flag.Int("min-ambients", 3, "Min Ambients to search")
+	minTotalAreaFlag := flag.Int("min-total-area", 70, "Min Total Area to search")
 
 	flag.Parse()
 
@@ -26,6 +30,10 @@ func main() {
 	searchResultLimit := *searchResultLimitFlag
 	command := *commandFlag
 	maxOffset := *maxOffsetFlag
+	minPrice := *minPriceFlag
+	maxPrice := *maxPriceFlag
+	minAmbients := *minAmbientsFlag
+	minTotalArea := *minTotalAreaFlag
 
 	if accessToken == "" {
 		panic("access token can't be empty")
@@ -33,7 +41,7 @@ func main() {
 
 	printHeader()
 
-	api := meli.NewApi(accessToken, searchResultLimit, maxOffset)
+	api := meli.NewApi(accessToken, searchResultLimit, maxOffset, minPrice, maxPrice, minAmbients)
 
 	switch command {
 	case CommandSearch:

@@ -2,1482 +2,2759 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-   <link rel="stylesheet" href="css/style.css">
-   <script src="js/script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Finder</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+         }
+
+         .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+         }
+
+         .title {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+         }
+
+         .listings-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+         }
+
+         .listing {
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+         }
+
+         .listing-title {
+            font-size: 18px;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+         }
+
+         .listing-details {
+            text-align: left;
+         }
+
+         .listing-details dt {
+            font-weight: bold;
+            color: #2c3e50;
+         }
+
+         .listing-details dd {
+            color: #34495e;
+            margin-left: 10px;
+            margin-bottom: 5px;
+         }
+
+         .listing-details dd a {
+            color: #3498db;
+            text-decoration: none;
+         }
+
+    </style>
 </head>
 <body>
 <div class="container">
-   <h3 class="title"> Real state </h3>
-   <div class="products-container">
-
-    <div class="product" data-name="p-0">
-        <strong>3 Ambientes Con Terraza Propia De 63 M2. No Te Lo Pierdas! Cochera!</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 63 m² m2 <br/>
-        Superficie Total: 116 m² m2 <br/>
-        Barrio: Villa Urquiza<br/>
-        Direccion: Baunes 2000<br/>
-        Precio: $350,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1408984140-3-ambientes-con-terraza-propia-de-63-m2-no-te-lo-pierdas-cochera-_JM>https://departamento.mercadolibre.com.ar/MLA-1408984140-3-ambientes-con-terraza-propia-de-63-m2-no-te-lo-pierdas-cochera-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-1">
-        <strong>Piso En  A 2 Cuadras Del Abasto Shopping Con Balcon Al Frente Todo Luz Y Sol</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 125 m² m2 <br/>
-        Superficie Total: 139 m² m2 <br/>
-        Barrio: Balvanera<br/>
-        Direccion: Sarmiento al 3000<br/>
-        Precio: $349,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1368163233-piso-en-a-2-cuadras-del-abasto-shopping-con-balcon-al-frente-todo-luz-y-sol-_JM>https://departamento.mercadolibre.com.ar/MLA-1368163233-piso-en-a-2-cuadras-del-abasto-shopping-con-balcon-al-frente-todo-luz-y-sol-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-2">
-        <strong>Departamento - Almagro</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 74 m² m2 <br/>
-        Superficie Total: 79 m² m2 <br/>
-        Barrio: Almagro<br/>
-        Direccion: Sarmiento al 4500<br/>
-        Precio: $220,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1411039166-departamento-almagro-_JM>https://departamento.mercadolibre.com.ar/MLA-1411039166-departamento-almagro-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-3">
-        <strong> 4 Amb C/ Cochera . (la Paternal)  Dueño . Únicamente Con Garantía Propietaria (condiciones De Ingreso En  Descripción )</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 78 m² m2 <br/>
-        Superficie Total: 85 m² m2 <br/>
-        Barrio: Paternal<br/>
-        Direccion: Avenida Juan Bautista Justo, Buenos Aires, Argentina<br/>
-        Precio: $195,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1367986547-4-amb-c-cochera-la-paternal-dueno-unicamente-con-garantia-propietaria-condiciones-de-ingreso-en-descripcion--_JM>https://departamento.mercadolibre.com.ar/MLA-1367986547-4-amb-c-cochera-la-paternal-dueno-unicamente-con-garantia-propietaria-condiciones-de-ingreso-en-descripcion--_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-4">
-        <strong>La Paternal Av J. B Justo Al 3800.  Dpto. 4 Amb C/ Cochera . Dueño . Solo Con Garantía Propietaria (condiciones De Ingreso En  Descripción )</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 78 m² m2 <br/>
-        Superficie Total: 85 m² m2 <br/>
-        Barrio: Paternal<br/>
-        Direccion: Avenida Juan Bautista Justo 3800, Buenos Aires, CABA, Argentina<br/>
-        Precio: $195,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1365769177-la-paternal-av-j-b-justo-al-3800-dpto-4-amb-c-cochera-dueno-solo-con-garantia-propietaria-condiciones-de-ingreso-en-descripcion--_JM>https://departamento.mercadolibre.com.ar/MLA-1365769177-la-paternal-av-j-b-justo-al-3800-dpto-4-amb-c-cochera-dueno-solo-con-garantia-propietaria-condiciones-de-ingreso-en-descripcion--_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-5">
-        <strong>Alquiler De Excelentes Departamentos A Estrenar En Villa Del Parque. 2 Y  3 Amb Disponibles</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 74 m² m2 <br/>
-        Superficie Total: 83 m² m2 <br/>
-        Barrio: Villa del Parque<br/>
-        Direccion: Comuna 11, Nazarre 3817, Buenos Aires, Argentina<br/>
-        Precio: $280,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1368470167-alquiler-de-excelentes-departamentos-a-estrenar-en-villa-del-parque-2-y-3-amb-disponibles-_JM>https://departamento.mercadolibre.com.ar/MLA-1368470167-alquiler-de-excelentes-departamentos-a-estrenar-en-villa-del-parque-2-y-3-amb-disponibles-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-6">
-        <strong>Oppel | Departamento En Alquiler | Belgrano  Capital Federal</strong> <br/>
-        Ambientes: 5 <br/>
-        Superficie Cubierta: 146.34 m² m2 <br/>
-        Superficie Total: 146.34 m² m2 <br/>
-        Barrio: Belgrano<br/>
-        Direccion: ARCOS al 2200. Entre Mendoza y Olazabal<br/>
-        Precio: $365,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1378607122-oppel-departamento-en-alquiler-belgrano-capital-federal-_JM>https://departamento.mercadolibre.com.ar/MLA-1378607122-oppel-departamento-en-alquiler-belgrano-capital-federal-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-7">
-        <strong>Alquiler Ph Casa Palermo Uso Profesional 3 Amb Y 1/2 Ideal Alquilo Para Estudio Gym Gimnasio Consultorios Show Room Empresa Gastronomia Y Mas Rubros Excelente Ubicacion </strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 70 m² m2 <br/>
-        Superficie Total: 100 m² m2 <br/>
-        Barrio: Palermo<br/>
-        Direccion: Jerónimo Salguero  1320<br/>
-        Precio: $250,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1365392885-alquiler-ph-casa-palermo-uso-profesional-3-amb-y-12-ideal-alquilo-para-estudio-gym-gimnasio-consultorios-show-room-empresa-gastronomia-y-mas-rubros-excelente-ubicacion-_JM>https://inmueble.mercadolibre.com.ar/MLA-1365392885-alquiler-ph-casa-palermo-uso-profesional-3-amb-y-12-ideal-alquilo-para-estudio-gym-gimnasio-consultorios-show-room-empresa-gastronomia-y-mas-rubros-excelente-ubicacion-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-8">
-        <strong>Casa De 4 Ambientes En Alquiler En Villa Lugano</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 95 m² m2 <br/>
-        Superficie Total: 110 m² m2 <br/>
-        Barrio: Villa Lugano<br/>
-        Direccion: José león Suárez  5389<br/>
-        Precio: $250,000.00<br/>
-        Permalink: <a href=https://casa.mercadolibre.com.ar/MLA-1403553562-casa-de-4-ambientes-en-alquiler-en-villa-lugano-_JM>https://casa.mercadolibre.com.ar/MLA-1403553562-casa-de-4-ambientes-en-alquiler-en-villa-lugano-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-9">
-        <strong>Alquiler Semipiso 3 Ambientes , Cochera Fija Cubierta, Equipado. Impecable!</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 104 m² m2 <br/>
-        Superficie Total: 121 m² m2 <br/>
-        Barrio: Belgrano<br/>
-        Direccion: Cuba  al 2300<br/>
-        Precio: $470,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1362207229-alquiler-semipiso-3-ambientes-cochera-fija-cubierta-equipado-impecable-_JM>https://departamento.mercadolibre.com.ar/MLA-1362207229-alquiler-semipiso-3-ambientes-cochera-fija-cubierta-equipado-impecable-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-10">
-        <strong>Oficina Unica Vista Abierta Frente A P.madero</strong> <br/>
-        Ambientes: 6 <br/>
-        Superficie Cubierta: 130 m² m2 <br/>
-        Superficie Total: 130 m² m2 <br/>
-        Barrio: San Nicolás<br/>
-        Direccion: Avenida Leandro N. Alem 600<br/>
-        Precio: $185,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1361770373-oficina-unica-vista-abierta-frente-a-pmadero-_JM>https://departamento.mercadolibre.com.ar/MLA-1361770373-oficina-unica-vista-abierta-frente-a-pmadero-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-11">
-        <strong>Alquiler Departamento 3 Ambientes, Flores, Ciudad De Buenos Aires</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 100 m² m2 <br/>
-        Superficie Total: 100 m² m2 <br/>
-        Barrio: Flores<br/>
-        Direccion: Av. Boyacá 621, Buenos Aires, Argentina<br/>
-        Precio: $260,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1404799588-alquiler-departamento-3-ambientes-flores-ciudad-de-buenos-aires-_JM>https://departamento.mercadolibre.com.ar/MLA-1404799588-alquiler-departamento-3-ambientes-flores-ciudad-de-buenos-aires-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-12">
-        <strong>Alquilo Habitaciones Privadas</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 80 m² m2 <br/>
-        Superficie Total: 90 m² m2 <br/>
-        Barrio: Villa Lugano<br/>
-        Direccion: Mariano Moreno  5019<br/>
-        Precio: $35,000.00<br/>
-        Permalink: <a href=https://casa.mercadolibre.com.ar/MLA-1365761923-alquilo-habitaciones-privadas-_JM>https://casa.mercadolibre.com.ar/MLA-1365761923-alquilo-habitaciones-privadas-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-13">
-        <strong>Ph - Para Uso Profesional - Patio Y Terraza Propia - Sin Exp</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 75 m² m2 <br/>
-        Superficie Total: 110 m² m2 <br/>
-        Barrio: Palermo Hollywood<br/>
-        Direccion: COSTA RICA  5738. Entre Bonpland y Carranza, a. j.<br/>
-        Precio: $183,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1364460191-ph-para-uso-profesional-patio-y-terraza-propia-sin-exp-_JM>https://inmueble.mercadolibre.com.ar/MLA-1364460191-ph-para-uso-profesional-patio-y-terraza-propia-sin-exp-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-14">
-        <strong>Departamento Reciclado Amplio Y Muy Luminoso (dueño Directo)</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 110 m² m2 <br/>
-        Superficie Total: 113 m² m2 <br/>
-        Barrio: Monserrat<br/>
-        Direccion: Av. Belgrano 300 - 600, Buenos Aires, CABA, Argentina<br/>
-        Precio: $195,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1398005934-departamento-reciclado-amplio-y-muy-luminoso-dueno-directo-_JM>https://departamento.mercadolibre.com.ar/MLA-1398005934-departamento-reciclado-amplio-y-muy-luminoso-dueno-directo-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-15">
-        <strong>Departamento 6 Ambientes | Alquiler | Piso | Balcón Corrido | Barrancas De Belgrano</strong> <br/>
-        Ambientes: 6 <br/>
-        Superficie Cubierta: 205 m² m2 <br/>
-        Superficie Total: 215 m² m2 <br/>
-        Barrio: Belgrano Barrancas<br/>
-        Direccion: Avenida 11 de Septiembre 1902, Buenos Aires, Argentina<br/>
-        Precio: $750,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1198728516-departamento-6-ambientes-alquiler-piso-balcon-corrido-barrancas-de-belgrano-_JM>https://departamento.mercadolibre.com.ar/MLA-1198728516-departamento-6-ambientes-alquiler-piso-balcon-corrido-barrancas-de-belgrano-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-16">
-        <strong>Depto Al Frente 3 Amb En Caballito</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 70 m² m2 <br/>
-        Superficie Total: 70 m² m2 <br/>
-        Barrio: Caballito<br/>
-        Direccion: Zuviría 100, CABA, Argentina<br/>
-        Precio: $140,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1408595690-depto-al-frente-3-amb-en-caballito-_JM>https://departamento.mercadolibre.com.ar/MLA-1408595690-depto-al-frente-3-amb-en-caballito-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-17">
-        <strong>Alquiler 4 Ambientes Con Dependencia En Paternal, Sobre Avenida San Martín. Piso Alto.</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 79 m² m2 <br/>
-        Superficie Total: 86 m² m2 <br/>
-        Barrio: Paternal<br/>
-        Direccion: Avenida San Martin al 2600<br/>
-        Precio: $180,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1408588222-alquiler-4-ambientes-con-dependencia-en-paternal-sobre-avenida-san-martin-piso-alto-_JM>https://departamento.mercadolibre.com.ar/MLA-1408588222-alquiler-4-ambientes-con-dependencia-en-paternal-sobre-avenida-san-martin-piso-alto-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-18">
-        <strong>Departamento En Alquiler En Caballito</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 70 m² m2 <br/>
-        Superficie Total: 70 m² m2 <br/>
-        Barrio: Caballito<br/>
-        Direccion: Zuviria 0<br/>
-        Precio: $140,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1408513376-departamento-en-alquiler-en-caballito-_JM>https://departamento.mercadolibre.com.ar/MLA-1408513376-departamento-en-alquiler-en-caballito-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-19">
-        <strong>Alquiler Depto 4 Ambientes En Caballito C/ Terraza</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 77 m² m2 <br/>
-        Superficie Total: 95 m² m2 <br/>
-        Barrio: Caballito<br/>
-        Direccion: Avenida José María Moreno 400<br/>
-        Precio: $380,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1368273981-alquiler-depto-4-ambientes-en-caballito-c-terraza-_JM>https://departamento.mercadolibre.com.ar/MLA-1368273981-alquiler-depto-4-ambientes-en-caballito-c-terraza-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-20">
-        <strong>Ph - Boedo</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 83 m² m2 <br/>
-        Superficie Total: 83 m² m2 <br/>
-        Barrio: Boedo<br/>
-        Direccion: Alquiler PH.   3 Ambientes EN Muñiz AL al 1600<br/>
-        Precio: $220,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1408985614-ph-boedo-_JM>https://inmueble.mercadolibre.com.ar/MLA-1408985614-ph-boedo-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-21">
-        <strong>Excelente Semipiso 4 Amb. En Alquiler En Caballito</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 86 m² m2 <br/>
-        Superficie Total: 97 m² m2 <br/>
-        Barrio: Caballito<br/>
-        Direccion: Avenida Pedro Goyena 1400<br/>
-        Precio: $240,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1406967512-excelente-semipiso-4-amb-en-alquiler-en-caballito-_JM>https://departamento.mercadolibre.com.ar/MLA-1406967512-excelente-semipiso-4-amb-en-alquiler-en-caballito-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-22">
-        <strong>Ph Fte ·132m2· 3amb C/dep · Entr Indep T/luz Bcón Patio Andaluz, Tza Y Parrilla!</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 102 m² m2 <br/>
-        Superficie Total: 132 m² m2 <br/>
-        Barrio: Boedo<br/>
-        Direccion: Avenida Juan de Garay al 4000<br/>
-        Precio: $280,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1368583267-ph-fte-132m2-3amb-cdep-entr-indep-tluz-bcon-patio-andaluz-tza-y-parrilla-_JM>https://inmueble.mercadolibre.com.ar/MLA-1368583267-ph-fte-132m2-3amb-cdep-entr-indep-tluz-bcon-patio-andaluz-tza-y-parrilla-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-23">
-        <strong>Departamento En Monte Castro</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 65 m² m2 <br/>
-        Superficie Total: 72 m² m2 <br/>
-        Barrio: Monte Castro<br/>
-        Direccion: Gualeguaychu 1800<br/>
-        Precio: $150,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1409003070-departamento-en-monte-castro-_JM>https://departamento.mercadolibre.com.ar/MLA-1409003070-departamento-en-monte-castro-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-24">
-        <strong>Semipiso 4 Ambientes Con Balcón Aterrazado En Versalles</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 80 m² m2 <br/>
-        Superficie Total: 96 m² m2 <br/>
-        Barrio: Versalles<br/>
-        Direccion: BRUSELAS 800. Entre Santo tome y Av.arregui<br/>
-        Precio: $220,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1408706528-semipiso-4-ambientes-con-balcon-aterrazado-en-versalles-_JM>https://departamento.mercadolibre.com.ar/MLA-1408706528-semipiso-4-ambientes-con-balcon-aterrazado-en-versalles-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-25">
-        <strong>Alquiler Ph 3 Ambientes Sn Expensas </strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 94 m² m2 <br/>
-        Superficie Total: 118 m² m2 <br/>
-        Barrio: Palermo Soho<br/>
-        Direccion: Gascon al 1600- Alquiler PH SIN Expensas.<br/>
-        Precio: $250,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1368460893-alquiler-ph-3-ambientes-sn-expensas-_JM>https://inmueble.mercadolibre.com.ar/MLA-1368460893-alquiler-ph-3-ambientes-sn-expensas-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-26">
-        <strong>Lindisimo Departamento De 3 Ambientes Con Cochera En Belgrano.</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 94 m² m2 <br/>
-        Superficie Total: 100 m² m2 <br/>
-        Barrio: Belgrano<br/>
-        Direccion: Av. Libertador 5500<br/>
-        Precio: $300,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1409391322-lindisimo-departamento-de-3-ambientes-con-cochera-en-belgrano-_JM>https://departamento.mercadolibre.com.ar/MLA-1409391322-lindisimo-departamento-de-3-ambientes-con-cochera-en-belgrano-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-27">
-        <strong>Excelente 4 Ambientes En Recoleta</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 90 m² m2 <br/>
-        Superficie Total: 102 m² m2 <br/>
-        Barrio: Recoleta<br/>
-        Direccion: Santa Fé al 2500<br/>
-        Precio: $330,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1368195579-excelente-4-ambientes-en-recoleta-_JM>https://departamento.mercadolibre.com.ar/MLA-1368195579-excelente-4-ambientes-en-recoleta-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-28">
-        <strong>(unico) Vivienda Y Oficina En Duplex En Ayacucho Al 100 - 347 M2 Cubiertos - Centro</strong> <br/>
-        Ambientes: 6 <br/>
-        Superficie Cubierta: 347 m² m2 <br/>
-        Superficie Total: 360 m² m2 <br/>
-        Barrio: <br/>
-        Direccion: Ayacucho al 100<br/>
-        Precio: $230,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1406992730-unico-vivienda-y-oficina-en-duplex-en-ayacucho-al-100-347-m2-cubiertos-centro-_JM>https://departamento.mercadolibre.com.ar/MLA-1406992730-unico-vivienda-y-oficina-en-duplex-en-ayacucho-al-100-347-m2-cubiertos-centro-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-29">
-        <strong>Oficina  En Alquiler - Belgrano - Toillette Y Habitación En Suite, Terraza</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 58 m² m2 <br/>
-        Superficie Total: 105 m² m2 <br/>
-        Barrio: Belgrano<br/>
-        Direccion: Vidal al 2700, Belgrano<br/>
-        Precio: $240,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1410003198-oficina-en-alquiler-belgrano-toillette-y-habitacion-en-suite-terraza-_JM>https://departamento.mercadolibre.com.ar/MLA-1410003198-oficina-en-alquiler-belgrano-toillette-y-habitacion-en-suite-terraza-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-30">
-        <strong>Alquiler  Departamento 3 Ambientes C/amenities  Caballito.</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 68 m² m2 <br/>
-        Superficie Total: 78 m² m2 <br/>
-        Barrio: Caballito<br/>
-        Direccion: Bogota  100<br/>
-        Precio: $400,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1406993172-alquiler-departamento-3-ambientes-camenities-caballito-_JM>https://departamento.mercadolibre.com.ar/MLA-1406993172-alquiler-departamento-3-ambientes-camenities-caballito-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-31">
-        <strong>Departamento 3 Ambientes En  Alquiler Palermo</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 0 m² m2 <br/>
-        Superficie Total: 95 m² m2 <br/>
-        Barrio: Palermo<br/>
-        Direccion: Departamento 3 Ambientes - Maure 1580<br/>
-        Precio: $290,160.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1408959952-departamento-3-ambientes-en-alquiler-palermo-_JM>https://departamento.mercadolibre.com.ar/MLA-1408959952-departamento-3-ambientes-en-alquiler-palermo-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-32">
-        <strong>Departamento 3 Amb C Dependencia Y Cochera Canitas</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 94 m² m2 <br/>
-        Superficie Total: 110 m² m2 <br/>
-        Barrio: Palermo<br/>
-        Direccion: Avenida Luis María Campos 1000<br/>
-        Precio: $250,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1368328423-departamento-3-amb-c-dependencia-y-cochera-canitas-_JM>https://departamento.mercadolibre.com.ar/MLA-1368328423-departamento-3-amb-c-dependencia-y-cochera-canitas-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-33">
-        <strong>Departamento - Villa Urquiza</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 80 m² m2 <br/>
-        Superficie Total: 90 m² m2 <br/>
-        Barrio: Villa Urquiza<br/>
-        Direccion: Roosevelt al 5000, Caba<br/>
-        Precio: $220,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1409242548-departamento-villa-urquiza-_JM>https://departamento.mercadolibre.com.ar/MLA-1409242548-departamento-villa-urquiza-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-34">
-        <strong>Departamento De Tres Ambientes En Alquiler En  Nuñez</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 66 m² m2 <br/>
-        Superficie Total: 79 m² m2 <br/>
-        Barrio: Núñez<br/>
-        Direccion: Garcia del Rio al 2600<br/>
-        Precio: $329,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1409570648-departamento-de-tres-ambientes-en-alquiler-en-nunez-_JM>https://departamento.mercadolibre.com.ar/MLA-1409570648-departamento-de-tres-ambientes-en-alquiler-en-nunez-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-35">
-        <strong>Alquiler 4 Amb Estrenar Cochera/ Amenities Liniers</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 105 m² m2 <br/>
-        Superficie Total: 125 m² m2 <br/>
-        Barrio: Liniers<br/>
-        Direccion: Pieres 500<br/>
-        Precio: $320,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1410742854-alquiler-4-amb-estrenar-cochera-amenities-liniers-_JM>https://departamento.mercadolibre.com.ar/MLA-1410742854-alquiler-4-amb-estrenar-cochera-amenities-liniers-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-36">
-        <strong>Departamento En  Belgrano</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 70 m² m2 <br/>
-        Superficie Total: 70 m² m2 <br/>
-        Barrio: Belgrano Barrancas<br/>
-        Direccion: Vuelta DE Obligado  al 1900<br/>
-        Precio: $330,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1410414678-departamento-en-belgrano-_JM>https://departamento.mercadolibre.com.ar/MLA-1410414678-departamento-en-belgrano-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-37">
-        <strong>Departamento En Alquiler En Mataderos</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 65 m² m2 <br/>
-        Superficie Total: 75 m² m2 <br/>
-        Barrio: Mataderos<br/>
-        Direccion: ARAUJO al 900. Entre  av alberdi j.b y  manuel artigas<br/>
-        Precio: $180,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1407131668-departamento-en-alquiler-en-mataderos-_JM>https://departamento.mercadolibre.com.ar/MLA-1407131668-departamento-en-alquiler-en-mataderos-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-38">
-        <strong>Se Alquila Casa Para Alquiler Comercial.</strong> <br/>
-        Ambientes: 7 <br/>
-        Superficie Cubierta: 171 m² m2 <br/>
-        Superficie Total: 201 m² m2 <br/>
-        Barrio: Paternal<br/>
-        Direccion: Av. Alvarez Jonte   1500<br/>
-        Precio: $199,900.00<br/>
-        Permalink: <a href=https://casa.mercadolibre.com.ar/MLA-1368075035-se-alquila-casa-para-alquiler-comercial-_JM>https://casa.mercadolibre.com.ar/MLA-1368075035-se-alquila-casa-para-alquiler-comercial-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-39">
-        <strong>Alquiler - Ph Impecable 3 Amb Con Terraza</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 60 m² m2 <br/>
-        Superficie Total: 85 m² m2 <br/>
-        Barrio: Almagro<br/>
-        Direccion: Guardia Vieja 3800<br/>
-        Precio: $200,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1368602057-alquiler-ph-impecable-3-amb-con-terraza-_JM>https://inmueble.mercadolibre.com.ar/MLA-1368602057-alquiler-ph-impecable-3-amb-con-terraza-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-40">
-        <strong>Alquiler Departamento 4 Ambientes Balcón Caballito</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 84 m² m2 <br/>
-        Superficie Total: 93 m² m2 <br/>
-        Barrio: Caballito<br/>
-        Direccion: Rio de Janeiro 0<br/>
-        Precio: $250,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1368555219-alquiler-departamento-4-ambientes-balcon-caballito-_JM>https://departamento.mercadolibre.com.ar/MLA-1368555219-alquiler-departamento-4-ambientes-balcon-caballito-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-41">
-        <strong>Maipú 1200 4º- Increible Piso Con Vista A La Plaza, Alquiler Al Dólar Oficial.</strong> <br/>
-        Ambientes: 5 <br/>
-        Superficie Cubierta: 323 m² m2 <br/>
-        Superficie Total: 323 m² m2 <br/>
-        Barrio: Retiro<br/>
-        Direccion: Maipú al 1200<br/>
-        Precio: $527,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1410614188-maipu-1200-4-increible-piso-con-vista-a-la-plaza-alquiler-al-dolar-oficial-_JM>https://departamento.mercadolibre.com.ar/MLA-1410614188-maipu-1200-4-increible-piso-con-vista-a-la-plaza-alquiler-al-dolar-oficial-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-42">
-        <strong>Departamento En  Alquiler Temporal </strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 70 m² m2 <br/>
-        Superficie Total: 100 m² m2 <br/>
-        Barrio: Once<br/>
-        Direccion: Ecuador al 300<br/>
-        Precio: $160,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1368508483-departamento-en-alquiler-temporal-_JM>https://departamento.mercadolibre.com.ar/MLA-1368508483-departamento-en-alquiler-temporal-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-43">
-        <strong>Ph 5 Amb. V. Luro, Av. Rivadavia 8900 Uso Comercial</strong> <br/>
-        Ambientes: 6 <br/>
-        Superficie Cubierta: 115 m² m2 <br/>
-        Superficie Total: 160 m² m2 <br/>
-        Barrio: Villa Luro<br/>
-        Direccion: Rivadavia  8900<br/>
-        Precio: $240,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1368599861-ph-5-amb-v-luro-av-rivadavia-8900-uso-comercial-_JM>https://inmueble.mercadolibre.com.ar/MLA-1368599861-ph-5-amb-v-luro-av-rivadavia-8900-uso-comercial-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-44">
-        <strong>Casa Local Clasica En Palermo Hollywood</strong> <br/>
-        Ambientes: 6 <br/>
-        Superficie Cubierta: 150 m² m2 <br/>
-        Superficie Total: 300 m² m2 <br/>
-        Barrio: Palermo Hollywood<br/>
-        Direccion: Charcas  5000<br/>
-        Precio: $450,000.00<br/>
-        Permalink: <a href=https://casa.mercadolibre.com.ar/MLA-1409392174-casa-local-clasica-en-palermo-hollywood-_JM>https://casa.mercadolibre.com.ar/MLA-1409392174-casa-local-clasica-en-palermo-hollywood-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-45">
-        <strong>Ph 5 Amb. V. Luro, Av. Rivadavia 8980 Uso Comercial</strong> <br/>
-        Ambientes: 6 <br/>
-        Superficie Cubierta: 115 m² m2 <br/>
-        Superficie Total: 160 m² m2 <br/>
-        Barrio: Liniers<br/>
-        Direccion: Rivadavia  8900<br/>
-        Precio: $240,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1368586501-ph-5-amb-v-luro-av-rivadavia-8980-uso-comercial-_JM>https://inmueble.mercadolibre.com.ar/MLA-1368586501-ph-5-amb-v-luro-av-rivadavia-8980-uso-comercial-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-46">
-        <strong>Ph 5 Amb. V. Luro, Av. Rivadavia 8900 Uso Comercial</strong> <br/>
-        Ambientes: 6 <br/>
-        Superficie Cubierta: 115 m² m2 <br/>
-        Superficie Total: 160 m² m2 <br/>
-        Barrio: Villa Luro<br/>
-        Direccion: Rivadavia  8900<br/>
-        Precio: $240,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1368572929-ph-5-amb-v-luro-av-rivadavia-8900-uso-comercial-_JM>https://inmueble.mercadolibre.com.ar/MLA-1368572929-ph-5-amb-v-luro-av-rivadavia-8900-uso-comercial-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-47">
-        <strong>Ph 5 Amb. Flores, Av. Rivadavia 8980 Uso Comercial</strong> <br/>
-        Ambientes: 6 <br/>
-        Superficie Cubierta: 115 m² m2 <br/>
-        Superficie Total: 160 m² m2 <br/>
-        Barrio: Paternal<br/>
-        Direccion: Rivadavia  8900<br/>
-        Precio: $240,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1368535333-ph-5-amb-flores-av-rivadavia-8980-uso-comercial-_JM>https://inmueble.mercadolibre.com.ar/MLA-1368535333-ph-5-amb-flores-av-rivadavia-8980-uso-comercial-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-48">
-        <strong>Ph 5 Amb. Flores, Av. Rivadavia 8980 Uso Comercial</strong> <br/>
-        Ambientes: 6 <br/>
-        Superficie Cubierta: 115 m² m2 <br/>
-        Superficie Total: 160 m² m2 <br/>
-        Barrio: Flores<br/>
-        Direccion: Rivadavia  8900<br/>
-        Precio: $240,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1410619930-ph-5-amb-flores-av-rivadavia-8980-uso-comercial-_JM>https://inmueble.mercadolibre.com.ar/MLA-1410619930-ph-5-amb-flores-av-rivadavia-8980-uso-comercial-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-49">
-        <strong>Ph 5 Amb. Floresta, Av. Rivadavia 8980 Uso Comercial</strong> <br/>
-        Ambientes: 6 <br/>
-        Superficie Cubierta: 115 m² m2 <br/>
-        Superficie Total: 160 m² m2 <br/>
-        Barrio: Floresta<br/>
-        Direccion: Rivadavia  8900<br/>
-        Precio: $240,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1368611947-ph-5-amb-floresta-av-rivadavia-8980-uso-comercial-_JM>https://inmueble.mercadolibre.com.ar/MLA-1368611947-ph-5-amb-floresta-av-rivadavia-8980-uso-comercial-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-50">
-        <strong>Ph 5 Amb. Floresta, Av. Rivadavia 8980.uso Comercial</strong> <br/>
-        Ambientes: 6 <br/>
-        Superficie Cubierta: 115 m² m2 <br/>
-        Superficie Total: 160 m² m2 <br/>
-        Barrio: Floresta<br/>
-        Direccion: Rivadavia  8900<br/>
-        Precio: $240,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1410581236-ph-5-amb-floresta-av-rivadavia-8980uso-comercial-_JM>https://inmueble.mercadolibre.com.ar/MLA-1410581236-ph-5-amb-floresta-av-rivadavia-8980uso-comercial-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-51">
-        <strong>Alquiler Comercial Ph 7 Ambientesc/ Cochera Parque Avellaneda</strong> <br/>
-        Ambientes: 7 <br/>
-        Superficie Cubierta: 117 m² m2 <br/>
-        Superficie Total: 190 m² m2 <br/>
-        Barrio: Parque Avellaneda<br/>
-        Direccion: Shanghai 2000, Buenos Aires, Argentina<br/>
-        Precio: $170,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1368169709-alquiler-comercial-ph-7-ambientesc-cochera-parque-avellaneda-_JM>https://inmueble.mercadolibre.com.ar/MLA-1368169709-alquiler-comercial-ph-7-ambientesc-cochera-parque-avellaneda-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-52">
-        <strong>Loft 103 M2 - Alquiler - Cochera Fija Cubierta</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 98 m² m2 <br/>
-        Superficie Total: 103 m² m2 <br/>
-        Barrio: La Boca<br/>
-        Direccion: Caboto  400 4°<br/>
-        Precio: $290,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1410585260-loft-103-m2-alquiler-cochera-fija-cubierta-_JM>https://departamento.mercadolibre.com.ar/MLA-1410585260-loft-103-m2-alquiler-cochera-fija-cubierta-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-53">
-        <strong>Departamento En Recoleta</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 50 m² m2 <br/>
-        Superficie Total: 80 m² m2 <br/>
-        Barrio: Recoleta<br/>
-        Direccion: Austria al 2000<br/>
-        Precio: $390,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1410617774-departamento-en-recoleta-_JM>https://departamento.mercadolibre.com.ar/MLA-1410617774-departamento-en-recoleta-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-54">
-        <strong>3 Ambientes Venta Retiro Sobre Av Libertador</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 98 m² m2 <br/>
-        Superficie Total: 98 m² m2 <br/>
-        Barrio: Retiro<br/>
-        Direccion: Avenida del Libertador 100<br/>
-        Precio: $200,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1368430149-3-ambientes-venta-retiro-sobre-av-libertador-_JM>https://departamento.mercadolibre.com.ar/MLA-1368430149-3-ambientes-venta-retiro-sobre-av-libertador-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-55">
-        <strong>Casa En Alquiler En Abasto</strong> <br/>
-        Ambientes: 7 <br/>
-        Superficie Cubierta: 750 m² m2 <br/>
-        Superficie Total: 950 m² m2 <br/>
-        Barrio: Almagro<br/>
-        Direccion: GALLO al 700. Entre Lavalle y Tucuman<br/>
-        Precio: $1,200,000.00<br/>
-        Permalink: <a href=https://casa.mercadolibre.com.ar/MLA-1368613177-casa-en-alquiler-en-abasto-_JM>https://casa.mercadolibre.com.ar/MLA-1368613177-casa-en-alquiler-en-abasto-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-56">
-        <strong>Alquiler Departamento 103 M2 Balcón Panorámico 7mo Piso 4 Amb. &#43; Dependencia</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 88.19 m² m2 <br/>
-        Superficie Total: 103.2 m² m2 <br/>
-        Barrio: Almagro<br/>
-        Direccion: Avenida Díaz Vélez 3951, Buenos Aires, Argentina<br/>
-        Precio: $285,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1368103141-alquiler-departamento-103-m2-balcon-panoramico-7mo-piso-4-amb-dependencia-_JM>https://departamento.mercadolibre.com.ar/MLA-1368103141-alquiler-departamento-103-m2-balcon-panoramico-7mo-piso-4-amb-dependencia-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-57">
-        <strong>3 Ambientes Totalmente Al Frente Con Living Con Mas De 9 Mts. De Largo-dueño Directo</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 75 m² m2 <br/>
-        Superficie Total: 85 m² m2 <br/>
-        Barrio: Belgrano<br/>
-        Direccion: Moldes 2100 - 2400, Buenos Aires, Argentina<br/>
-        Precio: $290,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1408312940-3-ambientes-totalmente-al-frente-con-living-con-mas-de-9-mts-de-largo-dueno-directo-_JM>https://departamento.mercadolibre.com.ar/MLA-1408312940-3-ambientes-totalmente-al-frente-con-living-con-mas-de-9-mts-de-largo-dueno-directo-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-58">
-        <strong>Excelente 4 Amb Con Dependencia Frente Balcon Apto Profesional</strong> <br/>
-        Ambientes: 5 <br/>
-        Superficie Cubierta: 110 m² m2 <br/>
-        Superficie Total: 110 m² m2 <br/>
-        Barrio: Almagro<br/>
-        Direccion: Tte. Gral. Juan Domingo Perón 3545, CABA, Argentina<br/>
-        Precio: $190,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1408575896-excelente-4-amb-con-dependencia-frente-balcon-apto-profesional-_JM>https://departamento.mercadolibre.com.ar/MLA-1408575896-excelente-4-amb-con-dependencia-frente-balcon-apto-profesional-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-59">
-        <strong>Departamento 4 Amb Con Dependencia, Patio Y Balcón</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 90 m² m2 <br/>
-        Superficie Total: 90 m² m2 <br/>
-        Barrio: Villa del Parque<br/>
-        Direccion: Nogoyá 3042, Buenos Aires, Argentina<br/>
-        Precio: $180,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1410623338-departamento-4-amb-con-dependencia-patio-y-balcon-_JM>https://departamento.mercadolibre.com.ar/MLA-1410623338-departamento-4-amb-con-dependencia-patio-y-balcon-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-60">
-        <strong>Alquiler 3 Ambientes 2 Dormitorios Inmejorable Ubicación Barrio Norte</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 75 m² m2 <br/>
-        Superficie Total: 80 m² m2 <br/>
-        Barrio: Barrio Norte<br/>
-        Direccion: Basabilbaso al 1300<br/>
-        Precio: $135,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1368331369-alquiler-3-ambientes-2-dormitorios-inmejorable-ubicacion-barrio-norte-_JM>https://departamento.mercadolibre.com.ar/MLA-1368331369-alquiler-3-ambientes-2-dormitorios-inmejorable-ubicacion-barrio-norte-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-61">
-        <strong>3 Amb, 216 Mts Gral Peron 2698 Pb ( Barrio: Balvanera)</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 118 m² m2 <br/>
-        Superficie Total: 218 m² m2 <br/>
-        Barrio: Balvanera<br/>
-        Direccion: Teniente General Juan Domingo Perón 2698, Buenos Aires, Argentina<br/>
-        Precio: $220,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1408958138-3-amb-216-mts-gral-peron-2698-pb-barrio-balvanera-_JM>https://departamento.mercadolibre.com.ar/MLA-1408958138-3-amb-216-mts-gral-peron-2698-pb-barrio-balvanera-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-62">
-        <strong>0</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 60 m² m2 <br/>
-        Superficie Total: 72 m² m2 <br/>
-        Barrio: Villa Urquiza<br/>
-        Direccion: olazabal 4800<br/>
-        Precio: $220,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1408587054-0-_JM>https://departamento.mercadolibre.com.ar/MLA-1408587054-0-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-63">
-        <strong>Departamento De 3 Ambientes Cerca Limite Boedo No Alquiler</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 67 m² m2 <br/>
-        Superficie Total: 73 m² m2 <br/>
-        Barrio: Boedo<br/>
-        Direccion: Comuna 4, Achala 3547, Buenos Aires, Argentina<br/>
-        Precio: $80,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1226741328-departamento-de-3-ambientes-cerca-limite-boedo-no-alquiler-_JM>https://departamento.mercadolibre.com.ar/MLA-1226741328-departamento-de-3-ambientes-cerca-limite-boedo-no-alquiler-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-64">
-        <strong>5 Ambientes | Corrientes, Avda. Al 5900</strong> <br/>
-        Ambientes: 5 <br/>
-        Superficie Cubierta: 80 m² m2 <br/>
-        Superficie Total: 80 m² m2 <br/>
-        Barrio: Villa Crespo<br/>
-        Direccion: Corrientes, Avda. 5900<br/>
-        Precio: $90,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1353453485-5-ambientes-corrientes-avda-al-5900-_JM>https://inmueble.mercadolibre.com.ar/MLA-1353453485-5-ambientes-corrientes-avda-al-5900-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-65">
-        <strong>Departamento 3 Ambientes Parque Patricios No Alquiler Consulte Emprendimiento Emblemático En El Distrito Tecnológico</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 67 m² m2 <br/>
-        Superficie Total: 73 m² m2 <br/>
-        Barrio: Parque Patricios<br/>
-        Direccion: Comuna 4, Achala 3547, CABA, Argentina<br/>
-        Precio: $80,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1226767108-departamento-3-ambientes-parque-patricios-no-alquiler-consulte-emprendimiento-emblematico-en-el-distrito-tecnologico-_JM>https://departamento.mercadolibre.com.ar/MLA-1226767108-departamento-3-ambientes-parque-patricios-no-alquiler-consulte-emprendimiento-emblematico-en-el-distrito-tecnologico-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-66">
-        <strong>Departamento - Microcentro</strong> <br/>
-        Ambientes: 5 <br/>
-        Superficie Cubierta: 110 m² m2 <br/>
-        Superficie Total: 110 m² m2 <br/>
-        Barrio: <br/>
-        Direccion: San Martin al 600<br/>
-        Precio: $32,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1129272245-departamento-microcentro-_JM>https://departamento.mercadolibre.com.ar/MLA-1129272245-departamento-microcentro-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-67">
-        <strong>Casa En Alquiler 3 Ambientes Lote Propio/ Deposito/taller Y Terraza C/quincho En Villa Devoto</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 200 m² m2 <br/>
-        Superficie Total: 255 m² m2 <br/>
-        Barrio: Villa Devoto<br/>
-        Direccion: Obispo San Alberto 3676, Villa Devoto, Buenos Aires, Argentina<br/>
-        Precio: $280,000.00<br/>
-        Permalink: <a href=https://casa.mercadolibre.com.ar/MLA-1203710363-casa-en-alquiler-3-ambientes-lote-propio-depositotaller-y-terraza-cquincho-en-villa-devoto-_JM>https://casa.mercadolibre.com.ar/MLA-1203710363-casa-en-alquiler-3-ambientes-lote-propio-depositotaller-y-terraza-cquincho-en-villa-devoto-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-68">
-        <strong>Excelente Casa Ideal Varios Destino, Solo Comercial A Metros De Centro Comercial</strong> <br/>
-        Ambientes: 5 <br/>
-        Superficie Cubierta: 207 m² m2 <br/>
-        Superficie Total: 207 m² m2 <br/>
-        Barrio: Liniers<br/>
-        Direccion: Ventura Bosch 7116, Buenos Aires, Argentina<br/>
-        Precio: $180,000.00<br/>
-        Permalink: <a href=https://casa.mercadolibre.com.ar/MLA-1299591632-excelente-casa-ideal-varios-destino-solo-comercial-a-metros-de-centro-comercial-_JM>https://casa.mercadolibre.com.ar/MLA-1299591632-excelente-casa-ideal-varios-destino-solo-comercial-a-metros-de-centro-comercial-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-69">
-        <strong>Depto Tipo Duplex 3 Amb. A 2 Cd Av Saenz</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 70 m² m2 <br/>
-        Superficie Total: 70 m² m2 <br/>
-        Barrio: Nueva Pompeya<br/>
-        Direccion: Comuna 4, Fournier 2989, Buenos Aires, Argentina<br/>
-        Precio: $120,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1259825375-depto-tipo-duplex-3-amb-a-2-cd-av-saenz-_JM>https://departamento.mercadolibre.com.ar/MLA-1259825375-depto-tipo-duplex-3-amb-a-2-cd-av-saenz-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-70">
-        <strong>Excelente Esquina Uso Comercial 7 Amb C/ Terraza . </strong> <br/>
-        Ambientes: 7 <br/>
-        Superficie Cubierta: 180 m² m2 <br/>
-        Superficie Total: 200 m² m2 <br/>
-        Barrio: Barracas<br/>
-        Direccion: Benito Quinquela Martín 1700, Buenos Aires, Argentina<br/>
-        Precio: $150,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1356059324-excelente-esquina-uso-comercial-7-amb-c-terraza--_JM>https://inmueble.mercadolibre.com.ar/MLA-1356059324-excelente-esquina-uso-comercial-7-amb-c-terraza--_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-71">
-        <strong>Piso Único 5 Amb, Antiguo, Con Balcón</strong> <br/>
-        Ambientes: 5 <br/>
-        Superficie Cubierta: 100 m² m2 <br/>
-        Superficie Total: 112 m² m2 <br/>
-        Barrio: Villa Real<br/>
-        Direccion: Av F Beiro  5500 1°<br/>
-        Precio: $130,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1345269283-piso-unico-5-amb-antiguo-con-balcon-_JM>https://inmueble.mercadolibre.com.ar/MLA-1345269283-piso-unico-5-amb-antiguo-con-balcon-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-72">
-        <strong>Departamento 3 Ambientes Pompeya No Alquiler</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 67 m² m2 <br/>
-        Superficie Total: 73 m² m2 <br/>
-        Barrio: Nueva Pompeya<br/>
-        Direccion: Comuna 4, Achala 3547, Capital Federal, Argentina<br/>
-        Precio: $80,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1226002771-departamento-3-ambientes-pompeya-no-alquiler-_JM>https://departamento.mercadolibre.com.ar/MLA-1226002771-departamento-3-ambientes-pompeya-no-alquiler-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-73">
-        <strong>Casa Con Lote Prop.a Reciclar. Alquiler Comerc. Como Deposito U Otro Fin - Boedo</strong> <br/>
-        Ambientes: 5 <br/>
-        Superficie Cubierta: 290 m² m2 <br/>
-        Superficie Total: 405 m² m2 <br/>
-        Barrio: Boedo<br/>
-        Direccion: Av. Independencia al 3400<br/>
-        Precio: $250,000.00<br/>
-        Permalink: <a href=https://casa.mercadolibre.com.ar/MLA-1145041832-casa-con-lote-propa-reciclar-alquiler-comerc-como-deposito-u-otro-fin-boedo-_JM>https://casa.mercadolibre.com.ar/MLA-1145041832-casa-con-lote-propa-reciclar-alquiler-comerc-como-deposito-u-otro-fin-boedo-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-74">
-        <strong>Excelente 4 Ambientes Con Tres Baños Y Balcón.</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 90 m² m2 <br/>
-        Superficie Total: 90 m² m2 <br/>
-        Barrio: Belgrano<br/>
-        Direccion: Conesa  2500 7°<br/>
-        Precio: $250,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1362303310-excelente-4-ambientes-con-tres-banos-y-balcon-_JM>https://departamento.mercadolibre.com.ar/MLA-1362303310-excelente-4-ambientes-con-tres-banos-y-balcon-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-75">
-        <strong>Tres Ambientes En Retiro Con Expensas Incluidas</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 70 m² m2 <br/>
-        Superficie Total: 82 m² m2 <br/>
-        Barrio: Retiro<br/>
-        Direccion: Reconquista 1000, Buenos Aires, Argentina<br/>
-        Precio: $105,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1394025066-tres-ambientes-en-retiro-con-expensas-incluidas-_JM>https://departamento.mercadolibre.com.ar/MLA-1394025066-tres-ambientes-en-retiro-con-expensas-incluidas-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-76">
-        <strong>Casa En Alquiler En Liniers Barrio Naon</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 95 m² m2 <br/>
-        Superficie Total: 165 m² m2 <br/>
-        Barrio: Liniers<br/>
-        Direccion: ULRICO SCHMIDEL al 7300. Entre Guamini y Fragata la argentina<br/>
-        Precio: $150,000.00<br/>
-        Permalink: <a href=https://casa.mercadolibre.com.ar/MLA-1374293898-casa-en-alquiler-en-liniers-barrio-naon-_JM>https://casa.mercadolibre.com.ar/MLA-1374293898-casa-en-alquiler-en-liniers-barrio-naon-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-77">
-        <strong>Departemento En Caballito </strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 65 m² m2 <br/>
-        Superficie Total: 90 m² m2 <br/>
-        Barrio: Caballito<br/>
-        Direccion: Rosario al 100<br/>
-        Precio: $135,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1367200893-departemento-en-caballito-_JM>https://departamento.mercadolibre.com.ar/MLA-1367200893-departemento-en-caballito-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-78">
-        <strong>Ph 3 Ambientes Alquilado Villa Lugano Excelente Estado</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 75 m² m2 <br/>
-        Superficie Total: 90 m² m2 <br/>
-        Barrio: Villa Lugano<br/>
-        Direccion: horacio casco 5140<br/>
-        Precio: $95,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1281947697-ph-3-ambientes-alquilado-villa-lugano-excelente-estado-_JM>https://inmueble.mercadolibre.com.ar/MLA-1281947697-ph-3-ambientes-alquilado-villa-lugano-excelente-estado-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-79">
-        <strong>Ph 4 Amb Con Entrada Independiente, Patio Y Terraza En Excelente Zona Para Destino Comercial.</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 130 m² m2 <br/>
-        Superficie Total: 150 m² m2 <br/>
-        Barrio: Palermo<br/>
-        Direccion: Avenida Coronel Niceto Vega 4947, Buenos Aires, Argentina<br/>
-        Precio: $300,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1218488817-ph-4-amb-con-entrada-independiente-patio-y-terraza-en-excelente-zona-para-destino-comercial-_JM>https://inmueble.mercadolibre.com.ar/MLA-1218488817-ph-4-amb-con-entrada-independiente-patio-y-terraza-en-excelente-zona-para-destino-comercial-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-80">
-        <strong>Caballito-casa Exclusivo: Uso Comercial,refaccionada A Nuevo, Excelente Ubicacion,y Estado</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 80 m² m2 <br/>
-        Superficie Total: 140 m² m2 <br/>
-        Barrio: Caballito<br/>
-        Direccion: Mendes de andes 800 caba<br/>
-        Precio: $160,000.00<br/>
-        Permalink: <a href=https://casa.mercadolibre.com.ar/MLA-1364702784-caballito-casa-exclusivo-uso-comercialrefaccionada-a-nuevo-excelente-ubicaciony-estado-_JM>https://casa.mercadolibre.com.ar/MLA-1364702784-caballito-casa-exclusivo-uso-comercialrefaccionada-a-nuevo-excelente-ubicaciony-estado-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-81">
-        <strong>Oppel | Departamento En Alquiler | Nuñez  Capital Federal | </strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 58.63 m² m2 <br/>
-        Superficie Total: 85.15 m² m2 <br/>
-        Barrio: Núñez<br/>
-        Direccion: VEDIA al 1600. Entre Av. del libertador y 11 de sep<br/>
-        Precio: $220,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1365132668-oppel-departamento-en-alquiler-nunez-capital-federal--_JM>https://departamento.mercadolibre.com.ar/MLA-1365132668-oppel-departamento-en-alquiler-nunez-capital-federal--_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-82">
-        <strong>Loyola 400 3 Amb Ph Al Frente Entrada Indep. Loft Palermo</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 64 m² m2 <br/>
-        Superficie Total: 72 m² m2 <br/>
-        Barrio: Villa Crespo<br/>
-        Direccion: Loyola 400. Entre Scalabrini av. y Malabia<br/>
-        Precio: $155,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1367196173-loyola-400-3-amb-ph-al-frente-entrada-indep-loft-palermo-_JM>https://departamento.mercadolibre.com.ar/MLA-1367196173-loyola-400-3-amb-ph-al-frente-entrada-indep-loft-palermo-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-83">
-        <strong>Amplio Departamento 4 Ambientes Con Dependencia De Servicio - Apto Profesional</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 100 m² m2 <br/>
-        Superficie Total: 100 m² m2 <br/>
-        Barrio: Villa Crespo<br/>
-        Direccion: Lavalleja 200, Buenos Aires, Argentina<br/>
-        Precio: $180,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1361143219-amplio-departamento-4-ambientes-con-dependencia-de-servicio-apto-profesional-_JM>https://departamento.mercadolibre.com.ar/MLA-1361143219-amplio-departamento-4-ambientes-con-dependencia-de-servicio-apto-profesional-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-84">
-        <strong>Casa - Villa Pueyrredon</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 135 m² m2 <br/>
-        Superficie Total: 411 m² m2 <br/>
-        Barrio: Villa Pueyrredón<br/>
-        Direccion: Bolivia al 5000<br/>
-        Precio: $250,000.00<br/>
-        Permalink: <a href=https://casa.mercadolibre.com.ar/MLA-1347683193-casa-villa-pueyrredon-_JM>https://casa.mercadolibre.com.ar/MLA-1347683193-casa-villa-pueyrredon-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-85">
-        <strong>Depto 3 Ambientes Alquiler Alto Palermo</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 65 m² m2 <br/>
-        Superficie Total: 70 m² m2 <br/>
-        Barrio: Palermo<br/>
-        Direccion: Beruti 3465, Buenos Aires, Argentina<br/>
-        Precio: $340,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1391724608-depto-3-ambientes-alquiler-alto-palermo-_JM>https://departamento.mercadolibre.com.ar/MLA-1391724608-depto-3-ambientes-alquiler-alto-palermo-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-86">
-        <strong>Alquiler Ph 4 Ambientes C/ Cochera, Villa Lugano</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 129 m² m2 <br/>
-        Superficie Total: 180 m² m2 <br/>
-        Barrio: Villa Lugano<br/>
-        Direccion: Cosquin 4900<br/>
-        Precio: $220,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1361048696-alquiler-ph-4-ambientes-c-cochera-villa-lugano-_JM>https://inmueble.mercadolibre.com.ar/MLA-1361048696-alquiler-ph-4-ambientes-c-cochera-villa-lugano-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-87">
-        <strong>Alquiler Ph En 1° Piso De 2 Amb Mas Deposito O Pequeña Cochera Villa Lugano</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 60 m² m2 <br/>
-        Superficie Total: 85 m² m2 <br/>
-        Barrio: Villa Lugano<br/>
-        Direccion: Echeandía 4600, Buenos Aires, Argentina<br/>
-        Precio: $90,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1367157613-alquiler-ph-en-1-piso-de-2-amb-mas-deposito-o-pequena-cochera-villa-lugano-_JM>https://inmueble.mercadolibre.com.ar/MLA-1367157613-alquiler-ph-en-1-piso-de-2-amb-mas-deposito-o-pequena-cochera-villa-lugano-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-88">
-        <strong>Departamento 4 Ambientes Impecable - Villa Pueyrredon</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 100 m² m2 <br/>
-        Superficie Total: 121 m² m2 <br/>
-        Barrio: Villa Pueyrredón<br/>
-        Direccion: Carlos Molina Arrotea 2800, Buenos Aires, Argentina<br/>
-        Precio: $215,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1341367646-departamento-4-ambientes-impecable-villa-pueyrredon-_JM>https://departamento.mercadolibre.com.ar/MLA-1341367646-departamento-4-ambientes-impecable-villa-pueyrredon-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-89">
-        <strong>Alquiler Ph Comercial 3 Amb Oficina Sin Expensas V. Urquiza</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 77.55 m² m2 <br/>
-        Superficie Total: 86.7 m² m2 <br/>
-        Barrio: Villa Urquiza<br/>
-        Direccion: MONROE 4829. Entre Alvarez thomas, avda. y Pacheco<br/>
-        Precio: $198,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1338565263-alquiler-ph-comercial-3-amb-oficina-sin-expensas-v-urquiza-_JM>https://departamento.mercadolibre.com.ar/MLA-1338565263-alquiler-ph-comercial-3-amb-oficina-sin-expensas-v-urquiza-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-90">
-        <strong>Ph  Alquiler Terraza Patio Parrilla Villa Devoto</strong> <br/>
-        Ambientes: 5 <br/>
-        Superficie Cubierta: 0 m² m2 <br/>
-        Superficie Total: 140 m² m2 <br/>
-        Barrio: Villa Devoto<br/>
-        Direccion: Habana al 4100<br/>
-        Precio: $490,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1234844708-ph-alquiler-terraza-patio-parrilla-villa-devoto-_JM>https://inmueble.mercadolibre.com.ar/MLA-1234844708-ph-alquiler-terraza-patio-parrilla-villa-devoto-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-91">
-        <strong>Puan 1770, Caba/ Ph Alquiler 4 Ambientes / Planta Baja/ 80m2 / $120.000</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 80 m² m2 <br/>
-        Superficie Total: 80 m² m2 <br/>
-        Barrio: Parque Chacabuco<br/>
-        Direccion: Puan 1770, Buenos Aires, Argentina<br/>
-        Precio: $120,000.00<br/>
-        Permalink: <a href=https://casa.mercadolibre.com.ar/MLA-1406654610-puan-1770-caba-ph-alquiler-4-ambientes-planta-baja-80m2-120000-_JM>https://casa.mercadolibre.com.ar/MLA-1406654610-puan-1770-caba-ph-alquiler-4-ambientes-planta-baja-80m2-120000-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-92">
-        <strong>Alquiler Impactante Casa 6 Amb., Terraza, Cochera, Villa Del Parque.</strong> <br/>
-        Ambientes: 6 <br/>
-        Superficie Cubierta: 250 m² m2 <br/>
-        Superficie Total: 300 m² m2 <br/>
-        Barrio: Villa del Parque<br/>
-        Direccion: Baigorria 3700, Buenos Aires, Argentina<br/>
-        Precio: $420,000.00<br/>
-        Permalink: <a href=https://casa.mercadolibre.com.ar/MLA-1231740108-alquiler-impactante-casa-6-amb-terraza-cochera-villa-del-parque-_JM>https://casa.mercadolibre.com.ar/MLA-1231740108-alquiler-impactante-casa-6-amb-terraza-cochera-villa-del-parque-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-93">
-        <strong>Casa En 2 Plantas 6 Ambientes</strong> <br/>
-        Ambientes: 6 <br/>
-        Superficie Cubierta: 305 m² m2 <br/>
-        Superficie Total: 305 m² m2 <br/>
-        Barrio: Boedo<br/>
-        Direccion: Danel 1400, Buenos Aires, CABA, Argentina<br/>
-        Precio: $280,000.00<br/>
-        Permalink: <a href=https://casa.mercadolibre.com.ar/MLA-1362971153-casa-en-2-plantas-6-ambientes-_JM>https://casa.mercadolibre.com.ar/MLA-1362971153-casa-en-2-plantas-6-ambientes-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-94">
-        <strong>Departamento Luminoso, Excelente Ubicacion. 3 Ambientes Con Dependencia</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 82 m² m2 <br/>
-        Superficie Total: 82 m² m2 <br/>
-        Barrio: Barracas<br/>
-        Direccion: Avenida Montes de Oca &amp; Uspallata, Buenos Aires, Argentina<br/>
-        Precio: $140,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1390336096-departamento-luminoso-excelente-ubicacion-3-ambientes-con-dependencia-_JM>https://departamento.mercadolibre.com.ar/MLA-1390336096-departamento-luminoso-excelente-ubicacion-3-ambientes-con-dependencia-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-95">
-        <strong>Ph Uso Comercial Unicamente</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 70 m² m2 <br/>
-        Superficie Total: 70 m² m2 <br/>
-        Barrio: Villa Urquiza<br/>
-        Direccion: La Pampa 5141, Buenos Aires, Argentina<br/>
-        Precio: $130,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1391574264-ph-uso-comercial-unicamente-_JM>https://inmueble.mercadolibre.com.ar/MLA-1391574264-ph-uso-comercial-unicamente-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-96">
-        <strong>Ph - Belgrano</strong> <br/>
-        Ambientes: 5 <br/>
-        Superficie Cubierta: 104 m² m2 <br/>
-        Superficie Total: 104 m² m2 <br/>
-        Barrio: Belgrano<br/>
-        Direccion: Sucre al 2700<br/>
-        Precio: $360,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1297400996-ph-belgrano-_JM>https://inmueble.mercadolibre.com.ar/MLA-1297400996-ph-belgrano-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-97">
-        <strong>3 Ambientes - Al Frente - Balcón Corrido - Excelente Ubicación</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 61 m² m2 <br/>
-        Superficie Total: 71 m² m2 <br/>
-        Barrio: Caballito<br/>
-        Direccion: Neuquén 516, Buenos Aires, Argentina<br/>
-        Precio: $170,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1400247700-3-ambientes-al-frente-balcon-corrido-excelente-ubicacion-_JM>https://departamento.mercadolibre.com.ar/MLA-1400247700-3-ambientes-al-frente-balcon-corrido-excelente-ubicacion-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-98">
-        <strong> 5 Ambientes Apto Profesional Opcional Cocheras</strong> <br/>
-        Ambientes: 5 <br/>
-        Superficie Cubierta: 105 m² m2 <br/>
-        Superficie Total: 105 m² m2 <br/>
-        Barrio: Monserrat<br/>
-        Direccion: Bernardo de Irigoyen 0<br/>
-        Precio: $150,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1381770282-5-ambientes-apto-profesional-opcional-cocheras-_JM>https://departamento.mercadolibre.com.ar/MLA-1381770282-5-ambientes-apto-profesional-opcional-cocheras-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-99">
-        <strong>Ph Reciclado !!! 3 O 4 Amb *sin Expensas *a Pasos Del Parque</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 86 m² m2 <br/>
-        Superficie Total: 95 m² m2 <br/>
-        Barrio: Caballito<br/>
-        Direccion: Eleodoro Lobos  500 PB<br/>
-        Precio: $290,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1387163254-ph-reciclado-3-o-4-amb-sin-expensas-a-pasos-del-parque-_JM>https://inmueble.mercadolibre.com.ar/MLA-1387163254-ph-reciclado-3-o-4-amb-sin-expensas-a-pasos-del-parque-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-100">
-        <strong>Departamento En Alquiler En Flores</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 60.1 m² m2 <br/>
-        Superficie Total: 91.1 m² m2 <br/>
-        Barrio: Flores<br/>
-        Direccion: RAMÓN FALCÓN  al 2400. Entre Pedernera y Rivera indarte<br/>
-        Precio: $140,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1384891004-departamento-en-alquiler-en-flores-_JM>https://departamento.mercadolibre.com.ar/MLA-1384891004-departamento-en-alquiler-en-flores-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-101">
-        <strong>Semipiso 3 Ambientes Al Frente Con Balcón.</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 70 m² m2 <br/>
-        Superficie Total: 80 m² m2 <br/>
-        Barrio: Recoleta<br/>
-        Direccion: Peña al 2500. Entre Laprida y Av. pueyrredón<br/>
-        Precio: $190,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1399093128-semipiso-3-ambientes-al-frente-con-balcon-_JM>https://departamento.mercadolibre.com.ar/MLA-1399093128-semipiso-3-ambientes-al-frente-con-balcon-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-102">
-        <strong>Alquiler A Estrenar - Oportunidad -  3 Amb C/coch Fija  - Piscina/sum/parrilla</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 75 m² m2 <br/>
-        Superficie Total: 88 m² m2 <br/>
-        Barrio: Villa Urquiza<br/>
-        Direccion: Nahuel Huapi al 4900<br/>
-        Precio: $360,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1373064452-alquiler-a-estrenar-oportunidad-3-amb-ccoch-fija-piscinasumparrilla-_JM>https://departamento.mercadolibre.com.ar/MLA-1373064452-alquiler-a-estrenar-oportunidad-3-amb-ccoch-fija-piscinasumparrilla-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-103">
-        <strong>Ph En Alquiler 6 Dormitorios En Suite 2 Cocinas Terraza </strong> <br/>
-        Ambientes: 7 <br/>
-        Superficie Cubierta: 70 m² m2 <br/>
-        Superficie Total: 100 m² m2 <br/>
-        Barrio: Villa Ortúzar<br/>
-        Direccion: Barzana  1000<br/>
-        Precio: $300,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1364329553-ph-en-alquiler-6-dormitorios-en-suite-2-cocinas-terraza-_JM>https://inmueble.mercadolibre.com.ar/MLA-1364329553-ph-en-alquiler-6-dormitorios-en-suite-2-cocinas-terraza-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-104">
-        <strong>Alquiler De Amplio 4 Ambientes En Pleno Villa Crespo</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 90 m² m2 <br/>
-        Superficie Total: 100 m² m2 <br/>
-        Barrio: Villa Crespo<br/>
-        Direccion: Camargo 732<br/>
-        Precio: $170,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1399541484-alquiler-de-amplio-4-ambientes-en-pleno-villa-crespo-_JM>https://departamento.mercadolibre.com.ar/MLA-1399541484-alquiler-de-amplio-4-ambientes-en-pleno-villa-crespo-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-105">
-        <strong>Alquiler De Casa De 4 Ambientes En Pompeya</strong> <br/>
-        Ambientes: 5 <br/>
-        Superficie Cubierta: 125 m² m2 <br/>
-        Superficie Total: 150 m² m2 <br/>
-        Barrio: Nueva Pompeya<br/>
-        Direccion: La Constancia   2500<br/>
-        Precio: $150,000.00<br/>
-        Permalink: <a href=https://casa.mercadolibre.com.ar/MLA-1405778366-alquiler-de-casa-de-4-ambientes-en-pompeya-_JM>https://casa.mercadolibre.com.ar/MLA-1405778366-alquiler-de-casa-de-4-ambientes-en-pompeya-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-106">
-        <strong>Departamento - Flores</strong> <br/>
-        Ambientes: 6 <br/>
-        Superficie Cubierta: 168 m² m2 <br/>
-        Superficie Total: 170 m² m2 <br/>
-        Barrio: Flores<br/>
-        Direccion: Av Avellaneda al 2900<br/>
-        Precio: $220,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1362278967-departamento-flores-_JM>https://departamento.mercadolibre.com.ar/MLA-1362278967-departamento-flores-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-107">
-        <strong>Ph En Alquiler - Nuñez - 4 Amb. &#43; Cochera &#43; Terraza &#43; Quincho</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 124 m² m2 <br/>
-        Superficie Total: 146 m² m2 <br/>
-        Barrio: Núñez<br/>
-        Direccion: Conesa 3191, Buenos Aires, Argentina<br/>
-        Precio: $350,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1366611083-ph-en-alquiler-nunez-4-amb-cochera-terraza-quincho-_JM>https://inmueble.mercadolibre.com.ar/MLA-1366611083-ph-en-alquiler-nunez-4-amb-cochera-terraza-quincho-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-108">
-        <strong>Casa Con Local Destino Comercial. </strong> <br/>
-        Ambientes: 8 <br/>
-        Superficie Cubierta: 230 m² m2 <br/>
-        Superficie Total: 380 m² m2 <br/>
-        Barrio: Villa Crespo<br/>
-        Direccion: Valentin Virasoro  1600<br/>
-        Precio: $500,000.00<br/>
-        Permalink: <a href=https://casa.mercadolibre.com.ar/MLA-1353311780-casa-con-local-destino-comercial-_JM>https://casa.mercadolibre.com.ar/MLA-1353311780-casa-con-local-destino-comercial-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-109">
-        <strong>Belgrano Chico - Full Amenities Y Vista A Rio</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 70 m² m2 <br/>
-        Superficie Total: 80 m² m2 <br/>
-        Barrio: Belgrano<br/>
-        Direccion: Husares al 2200<br/>
-        Precio: $380,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1381103254-belgrano-chico-full-amenities-y-vista-a-rio-_JM>https://departamento.mercadolibre.com.ar/MLA-1381103254-belgrano-chico-full-amenities-y-vista-a-rio-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-110">
-        <strong>Departamento En Alquiler De 2 Dormitorios C/ Cochera En Caballito</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 110 m² m2 <br/>
-        Superficie Total: 116 m² m2 <br/>
-        Barrio: Caballito<br/>
-        Direccion: Virasoro al 900<br/>
-        Precio: $325,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1362571815-departamento-en-alquiler-de-2-dormitorios-c-cochera-en-caballito-_JM>https://departamento.mercadolibre.com.ar/MLA-1362571815-departamento-en-alquiler-de-2-dormitorios-c-cochera-en-caballito-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-111">
-        <strong>Ph Uso Comercial - Con Vivienda - Multiples Usos </strong> <br/>
-        Ambientes: 6 <br/>
-        Superficie Cubierta: 170 m² m2 <br/>
-        Superficie Total: 295 m² m2 <br/>
-        Barrio: Núñez<br/>
-        Direccion: Avenida Crámer 3052, Buenos Aires, Argentina<br/>
-        Precio: $700,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1132251048-ph-uso-comercial-con-vivienda-multiples-usos-_JM>https://inmueble.mercadolibre.com.ar/MLA-1132251048-ph-uso-comercial-con-vivienda-multiples-usos-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-112">
-        <strong>Ph 1er Piso Por Escalera 5amb &#43; Terraza</strong> <br/>
-        Ambientes: 5 <br/>
-        Superficie Cubierta: 130 m² m2 <br/>
-        Superficie Total: 170 m² m2 <br/>
-        Barrio: Caballito<br/>
-        Direccion: Condarco  3000 1°<br/>
-        Precio: $260,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1366599263-ph-1er-piso-por-escalera-5amb-terraza-_JM>https://inmueble.mercadolibre.com.ar/MLA-1366599263-ph-1er-piso-por-escalera-5amb-terraza-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-113">
-        <strong>Ph Alquiler Devoto Sin Expensas Gonzalez Terraza Propia</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 63 m² m2 <br/>
-        Superficie Total: 83 m² m2 <br/>
-        Barrio: Villa Devoto<br/>
-        Direccion: GONZALEZ, JOAQUIN V. al 3200. Entre Varela y Simbron<br/>
-        Precio: $250,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1406372602-ph-alquiler-devoto-sin-expensas-gonzalez-terraza-propia-_JM>https://inmueble.mercadolibre.com.ar/MLA-1406372602-ph-alquiler-devoto-sin-expensas-gonzalez-terraza-propia-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-114">
-        <strong>Casa 4 Ambientes Con Jardin Pileta Y Parrilla En Barracas Alquiler Temporario</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 180 m² m2 <br/>
-        Superficie Total: 311 m² m2 <br/>
-        Barrio: Barracas<br/>
-        Direccion: Osvaldo Cruz al 1900<br/>
-        Precio: $180,000.00<br/>
-        Permalink: <a href=https://casa.mercadolibre.com.ar/MLA-1366755123-casa-4-ambientes-con-jardin-pileta-y-parrilla-en-barracas-alquiler-temporario-_JM>https://casa.mercadolibre.com.ar/MLA-1366755123-casa-4-ambientes-con-jardin-pileta-y-parrilla-en-barracas-alquiler-temporario-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-115">
-        <strong>Casa  En Alquiler Uso Comercial/profesional</strong> <br/>
-        Ambientes: 8 <br/>
-        Superficie Cubierta: 615 m² m2 <br/>
-        Superficie Total: 700 m² m2 <br/>
-        Barrio: Versalles<br/>
-        Direccion: Arregui al 6200<br/>
-        Precio: $500,000.00<br/>
-        Permalink: <a href=https://casa.mercadolibre.com.ar/MLA-1125632162-casa-en-alquiler-uso-comercialprofesional-_JM>https://casa.mercadolibre.com.ar/MLA-1125632162-casa-en-alquiler-uso-comercialprofesional-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-116">
-        <strong>Av. Angel Gallardo 600 P4° - 4 Amb. Fte. C/bcón. Corrido. 2 Baños. Parque Centenario.</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 69 m² m2 <br/>
-        Superficie Total: 81 m² m2 <br/>
-        Barrio: Caballito<br/>
-        Direccion: Av. Angel Gallardo 600<br/>
-        Precio: $200,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1403939936-av-angel-gallardo-600-p4-4-amb-fte-cbcon-corrido-2-banos-parque-centenario-_JM>https://departamento.mercadolibre.com.ar/MLA-1403939936-av-angel-gallardo-600-p4-4-amb-fte-cbcon-corrido-2-banos-parque-centenario-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-117">
-        <strong>Caballito Ph Uso Comercial Exclusivo</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 80 m² m2 <br/>
-        Superficie Total: 140 m² m2 <br/>
-        Barrio: Caballito<br/>
-        Direccion: Méndez de Andes 878, Buenos Aires, Argentina<br/>
-        Precio: $160,000.00<br/>
-        Permalink: <a href=https://inmueble.mercadolibre.com.ar/MLA-1199909901-caballito-ph-uso-comercial-exclusivo-_JM>https://inmueble.mercadolibre.com.ar/MLA-1199909901-caballito-ph-uso-comercial-exclusivo-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-118">
-        <strong>Alquiler Duplex 3 Amb. Boedo Oportunidad!!!</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 82 m² m2 <br/>
-        Superficie Total: 101 m² m2 <br/>
-        Barrio: Boedo<br/>
-        Direccion: Muñiz 1600<br/>
-        Precio: $270,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1366974277-alquiler-duplex-3-amb-boedo-oportunidad-_JM>https://departamento.mercadolibre.com.ar/MLA-1366974277-alquiler-duplex-3-amb-boedo-oportunidad-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-119">
-        <strong>Amplio 4 Amb En Alquiler - Zona Almagro</strong> <br/>
-        Ambientes: 4 <br/>
-        Superficie Cubierta: 90 m² m2 <br/>
-        Superficie Total: 100 m² m2 <br/>
-        Barrio: Almagro<br/>
-        Direccion: Tte. Gral. Juan Domingo Perón 3545, Buenos Aires, Argentina<br/>
-        Precio: $220,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1363377673-amplio-4-amb-en-alquiler-zona-almagro-_JM>https://departamento.mercadolibre.com.ar/MLA-1363377673-amplio-4-amb-en-alquiler-zona-almagro-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-120">
-        <strong>Departamento En  Caballito</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 0 m² m2 <br/>
-        Superficie Total: 116 m² m2 <br/>
-        Barrio: Caballito<br/>
-        Direccion: Jose Maria Moreno  al 400<br/>
-        Precio: $150,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1359741825-departamento-en-caballito-_JM>https://departamento.mercadolibre.com.ar/MLA-1359741825-departamento-en-caballito-_JM</a>
-    </div>
-    <br/>
-
-    <div class="product" data-name="p-121">
-        <strong>Excelente Ph De 3 Ambientes C/ Patio En Flores</strong> <br/>
-        Ambientes: 3 <br/>
-        Superficie Cubierta: 60 m² m2 <br/>
-        Superficie Total: 70 m² m2 <br/>
-        Barrio: Flores<br/>
-        Direccion: Av. Alberdi 2300<br/>
-        Precio: $160,000.00<br/>
-        Permalink: <a href=https://departamento.mercadolibre.com.ar/MLA-1393676496-excelente-ph-de-3-ambientes-c-patio-en-flores-_JM>https://departamento.mercadolibre.com.ar/MLA-1393676496-excelente-ph-de-3-ambientes-c-patio-en-flores-_JM</a>
-    </div>
-    <br/>
-
-</div>
+   <h1 class="title">Real Estate Listings - Total Found: 122</h1>
+   <div class="listings-container">
+      
+         <div class="listing">
+            <h3 class="listing-title">3 Ambientes Con Terraza Propia De 63 M2. No Te Lo Pierdas! Cochera!</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>63 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>116 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Urquiza</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Baunes 2000</dd>
+                  <dt>Precio:</dt>
+                  <dd>$350,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1408984140-3-ambientes-con-terraza-propia-de-63-m2-no-te-lo-pierdas-cochera-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Piso En  A 2 Cuadras Del Abasto Shopping Con Balcon Al Frente Todo Luz Y Sol</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>125 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>139 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Balvanera</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Sarmiento al 3000</dd>
+                  <dt>Precio:</dt>
+                  <dd>$349,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1368163233-piso-en-a-2-cuadras-del-abasto-shopping-con-balcon-al-frente-todo-luz-y-sol-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departamento - Almagro</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>74 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>79 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Almagro</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Sarmiento al 4500</dd>
+                  <dt>Precio:</dt>
+                  <dd>$220,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1411039166-departamento-almagro-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title"> 4 Amb C/ Cochera . (la Paternal)  Dueño . Únicamente Con Garantía Propietaria (condiciones De Ingreso En  Descripción )</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>78 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>85 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Paternal</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Avenida Juan Bautista Justo, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$195,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1367986547-4-amb-c-cochera-la-paternal-dueno-unicamente-con-garantia-propietaria-condiciones-de-ingreso-en-descripcion--_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">La Paternal Av J. B Justo Al 3800.  Dpto. 4 Amb C/ Cochera . Dueño . Solo Con Garantía Propietaria (condiciones De Ingreso En  Descripción )</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>78 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>85 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Paternal</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Avenida Juan Bautista Justo 3800, Buenos Aires, CABA, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$195,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1365769177-la-paternal-av-j-b-justo-al-3800-dpto-4-amb-c-cochera-dueno-solo-con-garantia-propietaria-condiciones-de-ingreso-en-descripcion--_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Alquiler De Excelentes Departamentos A Estrenar En Villa Del Parque. 2 Y  3 Amb Disponibles</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>74 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>83 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa del Parque</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Comuna 11, Nazarre 3817, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$280,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1368470167-alquiler-de-excelentes-departamentos-a-estrenar-en-villa-del-parque-2-y-3-amb-disponibles-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Oppel | Departamento En Alquiler | Belgrano  Capital Federal</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>5</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>146.34 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>146.34 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Belgrano</dd>
+                  <dt>Direccion:</dt>
+                  <dd>ARCOS al 2200. Entre Mendoza y Olazabal</dd>
+                  <dt>Precio:</dt>
+                  <dd>$365,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1378607122-oppel-departamento-en-alquiler-belgrano-capital-federal-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Alquiler Ph Casa Palermo Uso Profesional 3 Amb Y 1/2 Ideal Alquilo Para Estudio Gym Gimnasio Consultorios Show Room Empresa Gastronomia Y Mas Rubros Excelente Ubicacion </h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>70 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>100 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Palermo</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Jerónimo Salguero  1320</dd>
+                  <dt>Precio:</dt>
+                  <dd>$250,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1365392885-alquiler-ph-casa-palermo-uso-profesional-3-amb-y-12-ideal-alquilo-para-estudio-gym-gimnasio-consultorios-show-room-empresa-gastronomia-y-mas-rubros-excelente-ubicacion-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Casa De 4 Ambientes En Alquiler En Villa Lugano</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>95 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>110 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Lugano</dd>
+                  <dt>Direccion:</dt>
+                  <dd>José león Suárez  5389</dd>
+                  <dt>Precio:</dt>
+                  <dd>$250,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://casa.mercadolibre.com.ar/MLA-1403553562-casa-de-4-ambientes-en-alquiler-en-villa-lugano-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Alquiler Semipiso 3 Ambientes , Cochera Fija Cubierta, Equipado. Impecable!</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>104 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>121 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Belgrano</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Cuba  al 2300</dd>
+                  <dt>Precio:</dt>
+                  <dd>$470,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1362207229-alquiler-semipiso-3-ambientes-cochera-fija-cubierta-equipado-impecable-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Oficina Unica Vista Abierta Frente A P.madero</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>6</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>130 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>130 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>San Nicolás</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Avenida Leandro N. Alem 600</dd>
+                  <dt>Precio:</dt>
+                  <dd>$185,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1361770373-oficina-unica-vista-abierta-frente-a-pmadero-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Alquiler Departamento 3 Ambientes, Flores, Ciudad De Buenos Aires</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>100 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>100 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Flores</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Av. Boyacá 621, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$260,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1404799588-alquiler-departamento-3-ambientes-flores-ciudad-de-buenos-aires-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Alquilo Habitaciones Privadas</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>80 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>90 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Lugano</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Mariano Moreno  5019</dd>
+                  <dt>Precio:</dt>
+                  <dd>$35,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://casa.mercadolibre.com.ar/MLA-1365761923-alquilo-habitaciones-privadas-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Ph - Para Uso Profesional - Patio Y Terraza Propia - Sin Exp</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>75 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>110 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Palermo Hollywood</dd>
+                  <dt>Direccion:</dt>
+                  <dd>COSTA RICA  5738. Entre Bonpland y Carranza, a. j.</dd>
+                  <dt>Precio:</dt>
+                  <dd>$183,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1364460191-ph-para-uso-profesional-patio-y-terraza-propia-sin-exp-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departamento Reciclado Amplio Y Muy Luminoso (dueño Directo)</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>110 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>113 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Monserrat</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Av. Belgrano 300 - 600, Buenos Aires, CABA, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$195,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1398005934-departamento-reciclado-amplio-y-muy-luminoso-dueno-directo-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departamento 6 Ambientes | Alquiler | Piso | Balcón Corrido | Barrancas De Belgrano</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>6</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>205 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>215 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Belgrano Barrancas</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Avenida 11 de Septiembre 1902, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$750,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1198728516-departamento-6-ambientes-alquiler-piso-balcon-corrido-barrancas-de-belgrano-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Depto Al Frente 3 Amb En Caballito</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>70 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>70 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Caballito</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Zuviría 100, CABA, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$140,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1408595690-depto-al-frente-3-amb-en-caballito-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Alquiler 4 Ambientes Con Dependencia En Paternal, Sobre Avenida San Martín. Piso Alto.</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>79 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>86 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Paternal</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Avenida San Martin al 2600</dd>
+                  <dt>Precio:</dt>
+                  <dd>$180,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1408588222-alquiler-4-ambientes-con-dependencia-en-paternal-sobre-avenida-san-martin-piso-alto-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departamento En Alquiler En Caballito</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>70 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>70 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Caballito</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Zuviria 0</dd>
+                  <dt>Precio:</dt>
+                  <dd>$140,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1408513376-departamento-en-alquiler-en-caballito-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Alquiler Depto 4 Ambientes En Caballito C/ Terraza</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>77 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>95 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Caballito</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Avenida José María Moreno 400</dd>
+                  <dt>Precio:</dt>
+                  <dd>$380,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1368273981-alquiler-depto-4-ambientes-en-caballito-c-terraza-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Ph - Boedo</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>83 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>83 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Boedo</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Alquiler PH.   3 Ambientes EN Muñiz AL al 1600</dd>
+                  <dt>Precio:</dt>
+                  <dd>$220,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1408985614-ph-boedo-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Excelente Semipiso 4 Amb. En Alquiler En Caballito</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>86 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>97 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Caballito</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Avenida Pedro Goyena 1400</dd>
+                  <dt>Precio:</dt>
+                  <dd>$240,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1406967512-excelente-semipiso-4-amb-en-alquiler-en-caballito-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Ph Fte ·132m2· 3amb C/dep · Entr Indep T/luz Bcón Patio Andaluz, Tza Y Parrilla!</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>102 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>132 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Boedo</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Avenida Juan de Garay al 4000</dd>
+                  <dt>Precio:</dt>
+                  <dd>$280,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1368583267-ph-fte-132m2-3amb-cdep-entr-indep-tluz-bcon-patio-andaluz-tza-y-parrilla-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departamento En Monte Castro</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>65 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>72 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Monte Castro</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Gualeguaychu 1800</dd>
+                  <dt>Precio:</dt>
+                  <dd>$150,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1409003070-departamento-en-monte-castro-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Semipiso 4 Ambientes Con Balcón Aterrazado En Versalles</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>80 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>96 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Versalles</dd>
+                  <dt>Direccion:</dt>
+                  <dd>BRUSELAS 800. Entre Santo tome y Av.arregui</dd>
+                  <dt>Precio:</dt>
+                  <dd>$220,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1408706528-semipiso-4-ambientes-con-balcon-aterrazado-en-versalles-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Alquiler Ph 3 Ambientes Sn Expensas </h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>94 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>118 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Palermo Soho</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Gascon al 1600- Alquiler PH SIN Expensas.</dd>
+                  <dt>Precio:</dt>
+                  <dd>$250,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1368460893-alquiler-ph-3-ambientes-sn-expensas-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Lindisimo Departamento De 3 Ambientes Con Cochera En Belgrano.</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>94 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>100 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Belgrano</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Av. Libertador 5500</dd>
+                  <dt>Precio:</dt>
+                  <dd>$300,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1409391322-lindisimo-departamento-de-3-ambientes-con-cochera-en-belgrano-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Excelente 4 Ambientes En Recoleta</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>90 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>102 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Recoleta</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Santa Fé al 2500</dd>
+                  <dt>Precio:</dt>
+                  <dd>$330,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1368195579-excelente-4-ambientes-en-recoleta-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">(unico) Vivienda Y Oficina En Duplex En Ayacucho Al 100 - 347 M2 Cubiertos - Centro</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>6</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>347 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>360 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd></dd>
+                  <dt>Direccion:</dt>
+                  <dd>Ayacucho al 100</dd>
+                  <dt>Precio:</dt>
+                  <dd>$230,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1406992730-unico-vivienda-y-oficina-en-duplex-en-ayacucho-al-100-347-m2-cubiertos-centro-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Oficina  En Alquiler - Belgrano - Toillette Y Habitación En Suite, Terraza</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>58 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>105 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Belgrano</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Vidal al 2700, Belgrano</dd>
+                  <dt>Precio:</dt>
+                  <dd>$240,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1410003198-oficina-en-alquiler-belgrano-toillette-y-habitacion-en-suite-terraza-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Alquiler  Departamento 3 Ambientes C/amenities  Caballito.</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>68 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>78 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Caballito</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Bogota  100</dd>
+                  <dt>Precio:</dt>
+                  <dd>$400,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1406993172-alquiler-departamento-3-ambientes-camenities-caballito-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departamento 3 Ambientes En  Alquiler Palermo</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>0 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>95 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Palermo</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Departamento 3 Ambientes - Maure 1580</dd>
+                  <dt>Precio:</dt>
+                  <dd>$290,160.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1408959952-departamento-3-ambientes-en-alquiler-palermo-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departamento 3 Amb C Dependencia Y Cochera Canitas</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>94 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>110 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Palermo</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Avenida Luis María Campos 1000</dd>
+                  <dt>Precio:</dt>
+                  <dd>$250,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1368328423-departamento-3-amb-c-dependencia-y-cochera-canitas-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departamento - Villa Urquiza</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>80 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>90 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Urquiza</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Roosevelt al 5000, Caba</dd>
+                  <dt>Precio:</dt>
+                  <dd>$220,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1409242548-departamento-villa-urquiza-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departamento De Tres Ambientes En Alquiler En  Nuñez</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>66 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>79 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Núñez</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Garcia del Rio al 2600</dd>
+                  <dt>Precio:</dt>
+                  <dd>$329,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1409570648-departamento-de-tres-ambientes-en-alquiler-en-nunez-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Alquiler 4 Amb Estrenar Cochera/ Amenities Liniers</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>105 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>125 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Liniers</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Pieres 500</dd>
+                  <dt>Precio:</dt>
+                  <dd>$320,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1410742854-alquiler-4-amb-estrenar-cochera-amenities-liniers-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departamento En  Belgrano</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>70 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>70 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Belgrano Barrancas</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Vuelta DE Obligado  al 1900</dd>
+                  <dt>Precio:</dt>
+                  <dd>$330,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1410414678-departamento-en-belgrano-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departamento En Alquiler En Mataderos</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>65 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>75 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Mataderos</dd>
+                  <dt>Direccion:</dt>
+                  <dd>ARAUJO al 900. Entre  av alberdi j.b y  manuel artigas</dd>
+                  <dt>Precio:</dt>
+                  <dd>$180,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1407131668-departamento-en-alquiler-en-mataderos-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Se Alquila Casa Para Alquiler Comercial.</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>7</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>171 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>201 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Paternal</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Av. Alvarez Jonte   1500</dd>
+                  <dt>Precio:</dt>
+                  <dd>$199,900.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://casa.mercadolibre.com.ar/MLA-1368075035-se-alquila-casa-para-alquiler-comercial-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Alquiler - Ph Impecable 3 Amb Con Terraza</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>60 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>85 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Almagro</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Guardia Vieja 3800</dd>
+                  <dt>Precio:</dt>
+                  <dd>$200,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1368602057-alquiler-ph-impecable-3-amb-con-terraza-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Alquiler Departamento 4 Ambientes Balcón Caballito</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>84 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>93 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Caballito</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Rio de Janeiro 0</dd>
+                  <dt>Precio:</dt>
+                  <dd>$250,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1368555219-alquiler-departamento-4-ambientes-balcon-caballito-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Maipú 1200 4º- Increible Piso Con Vista A La Plaza, Alquiler Al Dólar Oficial.</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>5</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>323 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>323 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Retiro</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Maipú al 1200</dd>
+                  <dt>Precio:</dt>
+                  <dd>$527,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1410614188-maipu-1200-4-increible-piso-con-vista-a-la-plaza-alquiler-al-dolar-oficial-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departamento En  Alquiler Temporal </h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>70 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>100 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Once</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Ecuador al 300</dd>
+                  <dt>Precio:</dt>
+                  <dd>$160,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1368508483-departamento-en-alquiler-temporal-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Ph 5 Amb. V. Luro, Av. Rivadavia 8900 Uso Comercial</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>6</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>115 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>160 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Luro</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Rivadavia  8900</dd>
+                  <dt>Precio:</dt>
+                  <dd>$240,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1368599861-ph-5-amb-v-luro-av-rivadavia-8900-uso-comercial-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Casa Local Clasica En Palermo Hollywood</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>6</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>150 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>300 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Palermo Hollywood</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Charcas  5000</dd>
+                  <dt>Precio:</dt>
+                  <dd>$450,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://casa.mercadolibre.com.ar/MLA-1409392174-casa-local-clasica-en-palermo-hollywood-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Ph 5 Amb. V. Luro, Av. Rivadavia 8980 Uso Comercial</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>6</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>115 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>160 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Liniers</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Rivadavia  8900</dd>
+                  <dt>Precio:</dt>
+                  <dd>$240,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1368586501-ph-5-amb-v-luro-av-rivadavia-8980-uso-comercial-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Ph 5 Amb. V. Luro, Av. Rivadavia 8900 Uso Comercial</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>6</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>115 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>160 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Luro</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Rivadavia  8900</dd>
+                  <dt>Precio:</dt>
+                  <dd>$240,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1368572929-ph-5-amb-v-luro-av-rivadavia-8900-uso-comercial-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Ph 5 Amb. Flores, Av. Rivadavia 8980 Uso Comercial</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>6</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>115 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>160 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Paternal</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Rivadavia  8900</dd>
+                  <dt>Precio:</dt>
+                  <dd>$240,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1368535333-ph-5-amb-flores-av-rivadavia-8980-uso-comercial-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Ph 5 Amb. Flores, Av. Rivadavia 8980 Uso Comercial</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>6</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>115 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>160 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Flores</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Rivadavia  8900</dd>
+                  <dt>Precio:</dt>
+                  <dd>$240,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1410619930-ph-5-amb-flores-av-rivadavia-8980-uso-comercial-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Ph 5 Amb. Floresta, Av. Rivadavia 8980 Uso Comercial</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>6</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>115 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>160 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Floresta</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Rivadavia  8900</dd>
+                  <dt>Precio:</dt>
+                  <dd>$240,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1368611947-ph-5-amb-floresta-av-rivadavia-8980-uso-comercial-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Ph 5 Amb. Floresta, Av. Rivadavia 8980.uso Comercial</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>6</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>115 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>160 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Floresta</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Rivadavia  8900</dd>
+                  <dt>Precio:</dt>
+                  <dd>$240,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1410581236-ph-5-amb-floresta-av-rivadavia-8980uso-comercial-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Alquiler Comercial Ph 7 Ambientesc/ Cochera Parque Avellaneda</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>7</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>117 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>190 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Parque Avellaneda</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Shanghai 2000, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$170,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1368169709-alquiler-comercial-ph-7-ambientesc-cochera-parque-avellaneda-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Loft 103 M2 - Alquiler - Cochera Fija Cubierta</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>98 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>103 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>La Boca</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Caboto  400 4°</dd>
+                  <dt>Precio:</dt>
+                  <dd>$290,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1410585260-loft-103-m2-alquiler-cochera-fija-cubierta-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departamento En Recoleta</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>50 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>80 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Recoleta</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Austria al 2000</dd>
+                  <dt>Precio:</dt>
+                  <dd>$390,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1410617774-departamento-en-recoleta-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">3 Ambientes Venta Retiro Sobre Av Libertador</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>98 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>98 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Retiro</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Avenida del Libertador 100</dd>
+                  <dt>Precio:</dt>
+                  <dd>$200,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1368430149-3-ambientes-venta-retiro-sobre-av-libertador-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Casa En Alquiler En Abasto</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>7</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>750 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>950 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Almagro</dd>
+                  <dt>Direccion:</dt>
+                  <dd>GALLO al 700. Entre Lavalle y Tucuman</dd>
+                  <dt>Precio:</dt>
+                  <dd>$1,200,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://casa.mercadolibre.com.ar/MLA-1368613177-casa-en-alquiler-en-abasto-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Alquiler Departamento 103 M2 Balcón Panorámico 7mo Piso 4 Amb. &#43; Dependencia</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>88.19 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>103.2 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Almagro</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Avenida Díaz Vélez 3951, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$285,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1368103141-alquiler-departamento-103-m2-balcon-panoramico-7mo-piso-4-amb-dependencia-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">3 Ambientes Totalmente Al Frente Con Living Con Mas De 9 Mts. De Largo-dueño Directo</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>75 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>85 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Belgrano</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Moldes 2100 - 2400, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$290,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1408312940-3-ambientes-totalmente-al-frente-con-living-con-mas-de-9-mts-de-largo-dueno-directo-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Excelente 4 Amb Con Dependencia Frente Balcon Apto Profesional</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>5</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>110 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>110 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Almagro</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Tte. Gral. Juan Domingo Perón 3545, CABA, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$190,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1408575896-excelente-4-amb-con-dependencia-frente-balcon-apto-profesional-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departamento 4 Amb Con Dependencia, Patio Y Balcón</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>90 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>90 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa del Parque</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Nogoyá 3042, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$180,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1410623338-departamento-4-amb-con-dependencia-patio-y-balcon-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Alquiler 3 Ambientes 2 Dormitorios Inmejorable Ubicación Barrio Norte</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>75 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>80 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Barrio Norte</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Basabilbaso al 1300</dd>
+                  <dt>Precio:</dt>
+                  <dd>$135,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1368331369-alquiler-3-ambientes-2-dormitorios-inmejorable-ubicacion-barrio-norte-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">3 Amb, 216 Mts Gral Peron 2698 Pb ( Barrio: Balvanera)</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>118 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>218 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Balvanera</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Teniente General Juan Domingo Perón 2698, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$220,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1408958138-3-amb-216-mts-gral-peron-2698-pb-barrio-balvanera-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">0</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>60 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>72 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Urquiza</dd>
+                  <dt>Direccion:</dt>
+                  <dd>olazabal 4800</dd>
+                  <dt>Precio:</dt>
+                  <dd>$220,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1408587054-0-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departamento De 3 Ambientes Cerca Limite Boedo No Alquiler</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>67 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>73 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Boedo</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Comuna 4, Achala 3547, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$80,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1226741328-departamento-de-3-ambientes-cerca-limite-boedo-no-alquiler-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">5 Ambientes | Corrientes, Avda. Al 5900</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>5</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>80 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>80 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Crespo</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Corrientes, Avda. 5900</dd>
+                  <dt>Precio:</dt>
+                  <dd>$90,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1353453485-5-ambientes-corrientes-avda-al-5900-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departamento 3 Ambientes Parque Patricios No Alquiler Consulte Emprendimiento Emblemático En El Distrito Tecnológico</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>67 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>73 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Parque Patricios</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Comuna 4, Achala 3547, CABA, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$80,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1226767108-departamento-3-ambientes-parque-patricios-no-alquiler-consulte-emprendimiento-emblematico-en-el-distrito-tecnologico-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departamento - Microcentro</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>5</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>110 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>110 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd></dd>
+                  <dt>Direccion:</dt>
+                  <dd>San Martin al 600</dd>
+                  <dt>Precio:</dt>
+                  <dd>$32,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1129272245-departamento-microcentro-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Casa En Alquiler 3 Ambientes Lote Propio/ Deposito/taller Y Terraza C/quincho En Villa Devoto</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>200 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>255 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Devoto</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Obispo San Alberto 3676, Villa Devoto, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$280,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://casa.mercadolibre.com.ar/MLA-1203710363-casa-en-alquiler-3-ambientes-lote-propio-depositotaller-y-terraza-cquincho-en-villa-devoto-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Excelente Casa Ideal Varios Destino, Solo Comercial A Metros De Centro Comercial</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>5</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>207 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>207 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Liniers</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Ventura Bosch 7116, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$180,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://casa.mercadolibre.com.ar/MLA-1299591632-excelente-casa-ideal-varios-destino-solo-comercial-a-metros-de-centro-comercial-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Depto Tipo Duplex 3 Amb. A 2 Cd Av Saenz</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>70 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>70 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Nueva Pompeya</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Comuna 4, Fournier 2989, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$120,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1259825375-depto-tipo-duplex-3-amb-a-2-cd-av-saenz-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Excelente Esquina Uso Comercial 7 Amb C/ Terraza . </h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>7</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>180 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>200 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Barracas</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Benito Quinquela Martín 1700, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$150,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1356059324-excelente-esquina-uso-comercial-7-amb-c-terraza--_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Piso Único 5 Amb, Antiguo, Con Balcón</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>5</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>100 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>112 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Real</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Av F Beiro  5500 1°</dd>
+                  <dt>Precio:</dt>
+                  <dd>$130,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1345269283-piso-unico-5-amb-antiguo-con-balcon-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departamento 3 Ambientes Pompeya No Alquiler</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>67 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>73 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Nueva Pompeya</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Comuna 4, Achala 3547, Capital Federal, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$80,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1226002771-departamento-3-ambientes-pompeya-no-alquiler-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Casa Con Lote Prop.a Reciclar. Alquiler Comerc. Como Deposito U Otro Fin - Boedo</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>5</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>290 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>405 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Boedo</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Av. Independencia al 3400</dd>
+                  <dt>Precio:</dt>
+                  <dd>$250,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://casa.mercadolibre.com.ar/MLA-1145041832-casa-con-lote-propa-reciclar-alquiler-comerc-como-deposito-u-otro-fin-boedo-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Excelente 4 Ambientes Con Tres Baños Y Balcón.</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>90 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>90 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Belgrano</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Conesa  2500 7°</dd>
+                  <dt>Precio:</dt>
+                  <dd>$250,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1362303310-excelente-4-ambientes-con-tres-banos-y-balcon-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Tres Ambientes En Retiro Con Expensas Incluidas</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>70 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>82 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Retiro</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Reconquista 1000, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$105,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1394025066-tres-ambientes-en-retiro-con-expensas-incluidas-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Casa En Alquiler En Liniers Barrio Naon</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>95 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>165 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Liniers</dd>
+                  <dt>Direccion:</dt>
+                  <dd>ULRICO SCHMIDEL al 7300. Entre Guamini y Fragata la argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$150,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://casa.mercadolibre.com.ar/MLA-1374293898-casa-en-alquiler-en-liniers-barrio-naon-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departemento En Caballito </h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>65 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>90 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Caballito</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Rosario al 100</dd>
+                  <dt>Precio:</dt>
+                  <dd>$135,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1367200893-departemento-en-caballito-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Ph 3 Ambientes Alquilado Villa Lugano Excelente Estado</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>75 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>90 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Lugano</dd>
+                  <dt>Direccion:</dt>
+                  <dd>horacio casco 5140</dd>
+                  <dt>Precio:</dt>
+                  <dd>$95,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1281947697-ph-3-ambientes-alquilado-villa-lugano-excelente-estado-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Ph 4 Amb Con Entrada Independiente, Patio Y Terraza En Excelente Zona Para Destino Comercial.</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>130 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>150 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Palermo</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Avenida Coronel Niceto Vega 4947, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$300,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1218488817-ph-4-amb-con-entrada-independiente-patio-y-terraza-en-excelente-zona-para-destino-comercial-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Caballito-casa Exclusivo: Uso Comercial,refaccionada A Nuevo, Excelente Ubicacion,y Estado</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>80 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>140 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Caballito</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Mendes de andes 800 caba</dd>
+                  <dt>Precio:</dt>
+                  <dd>$160,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://casa.mercadolibre.com.ar/MLA-1364702784-caballito-casa-exclusivo-uso-comercialrefaccionada-a-nuevo-excelente-ubicaciony-estado-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Oppel | Departamento En Alquiler | Nuñez  Capital Federal | </h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>58.63 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>85.15 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Núñez</dd>
+                  <dt>Direccion:</dt>
+                  <dd>VEDIA al 1600. Entre Av. del libertador y 11 de sep</dd>
+                  <dt>Precio:</dt>
+                  <dd>$220,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1365132668-oppel-departamento-en-alquiler-nunez-capital-federal--_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Loyola 400 3 Amb Ph Al Frente Entrada Indep. Loft Palermo</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>64 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>72 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Crespo</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Loyola 400. Entre Scalabrini av. y Malabia</dd>
+                  <dt>Precio:</dt>
+                  <dd>$155,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1367196173-loyola-400-3-amb-ph-al-frente-entrada-indep-loft-palermo-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Amplio Departamento 4 Ambientes Con Dependencia De Servicio - Apto Profesional</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>100 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>100 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Crespo</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Lavalleja 200, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$180,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1361143219-amplio-departamento-4-ambientes-con-dependencia-de-servicio-apto-profesional-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Casa - Villa Pueyrredon</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>135 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>411 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Pueyrredón</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Bolivia al 5000</dd>
+                  <dt>Precio:</dt>
+                  <dd>$250,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://casa.mercadolibre.com.ar/MLA-1347683193-casa-villa-pueyrredon-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Depto 3 Ambientes Alquiler Alto Palermo</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>65 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>70 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Palermo</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Beruti 3465, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$340,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1391724608-depto-3-ambientes-alquiler-alto-palermo-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Alquiler Ph 4 Ambientes C/ Cochera, Villa Lugano</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>129 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>180 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Lugano</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Cosquin 4900</dd>
+                  <dt>Precio:</dt>
+                  <dd>$220,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1361048696-alquiler-ph-4-ambientes-c-cochera-villa-lugano-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Alquiler Ph En 1° Piso De 2 Amb Mas Deposito O Pequeña Cochera Villa Lugano</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>60 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>85 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Lugano</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Echeandía 4600, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$90,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1367157613-alquiler-ph-en-1-piso-de-2-amb-mas-deposito-o-pequena-cochera-villa-lugano-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departamento 4 Ambientes Impecable - Villa Pueyrredon</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>100 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>121 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Pueyrredón</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Carlos Molina Arrotea 2800, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$215,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1341367646-departamento-4-ambientes-impecable-villa-pueyrredon-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Alquiler Ph Comercial 3 Amb Oficina Sin Expensas V. Urquiza</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>77.55 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>86.7 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Urquiza</dd>
+                  <dt>Direccion:</dt>
+                  <dd>MONROE 4829. Entre Alvarez thomas, avda. y Pacheco</dd>
+                  <dt>Precio:</dt>
+                  <dd>$198,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1338565263-alquiler-ph-comercial-3-amb-oficina-sin-expensas-v-urquiza-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Ph  Alquiler Terraza Patio Parrilla Villa Devoto</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>5</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>0 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>140 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Devoto</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Habana al 4100</dd>
+                  <dt>Precio:</dt>
+                  <dd>$490,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1234844708-ph-alquiler-terraza-patio-parrilla-villa-devoto-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Puan 1770, Caba/ Ph Alquiler 4 Ambientes / Planta Baja/ 80m2 / $120.000</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>80 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>80 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Parque Chacabuco</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Puan 1770, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$120,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://casa.mercadolibre.com.ar/MLA-1406654610-puan-1770-caba-ph-alquiler-4-ambientes-planta-baja-80m2-120000-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Alquiler Impactante Casa 6 Amb., Terraza, Cochera, Villa Del Parque.</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>6</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>250 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>300 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa del Parque</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Baigorria 3700, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$420,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://casa.mercadolibre.com.ar/MLA-1231740108-alquiler-impactante-casa-6-amb-terraza-cochera-villa-del-parque-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Casa En 2 Plantas 6 Ambientes</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>6</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>305 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>305 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Boedo</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Danel 1400, Buenos Aires, CABA, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$280,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://casa.mercadolibre.com.ar/MLA-1362971153-casa-en-2-plantas-6-ambientes-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departamento Luminoso, Excelente Ubicacion. 3 Ambientes Con Dependencia</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>82 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>82 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Barracas</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Avenida Montes de Oca &amp; Uspallata, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$140,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1390336096-departamento-luminoso-excelente-ubicacion-3-ambientes-con-dependencia-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Ph Uso Comercial Unicamente</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>70 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>70 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Urquiza</dd>
+                  <dt>Direccion:</dt>
+                  <dd>La Pampa 5141, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$130,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1391574264-ph-uso-comercial-unicamente-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Ph - Belgrano</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>5</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>104 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>104 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Belgrano</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Sucre al 2700</dd>
+                  <dt>Precio:</dt>
+                  <dd>$360,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1297400996-ph-belgrano-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">3 Ambientes - Al Frente - Balcón Corrido - Excelente Ubicación</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>61 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>71 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Caballito</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Neuquén 516, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$170,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1400247700-3-ambientes-al-frente-balcon-corrido-excelente-ubicacion-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title"> 5 Ambientes Apto Profesional Opcional Cocheras</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>5</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>105 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>105 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Monserrat</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Bernardo de Irigoyen 0</dd>
+                  <dt>Precio:</dt>
+                  <dd>$150,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1381770282-5-ambientes-apto-profesional-opcional-cocheras-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Ph Reciclado !!! 3 O 4 Amb *sin Expensas *a Pasos Del Parque</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>86 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>95 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Caballito</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Eleodoro Lobos  500 PB</dd>
+                  <dt>Precio:</dt>
+                  <dd>$290,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1387163254-ph-reciclado-3-o-4-amb-sin-expensas-a-pasos-del-parque-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departamento En Alquiler En Flores</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>60.1 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>91.1 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Flores</dd>
+                  <dt>Direccion:</dt>
+                  <dd>RAMÓN FALCÓN  al 2400. Entre Pedernera y Rivera indarte</dd>
+                  <dt>Precio:</dt>
+                  <dd>$140,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1384891004-departamento-en-alquiler-en-flores-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Semipiso 3 Ambientes Al Frente Con Balcón.</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>70 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>80 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Recoleta</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Peña al 2500. Entre Laprida y Av. pueyrredón</dd>
+                  <dt>Precio:</dt>
+                  <dd>$190,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1399093128-semipiso-3-ambientes-al-frente-con-balcon-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Alquiler A Estrenar - Oportunidad -  3 Amb C/coch Fija  - Piscina/sum/parrilla</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>75 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>88 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Urquiza</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Nahuel Huapi al 4900</dd>
+                  <dt>Precio:</dt>
+                  <dd>$360,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1373064452-alquiler-a-estrenar-oportunidad-3-amb-ccoch-fija-piscinasumparrilla-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Ph En Alquiler 6 Dormitorios En Suite 2 Cocinas Terraza </h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>7</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>70 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>100 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Ortúzar</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Barzana  1000</dd>
+                  <dt>Precio:</dt>
+                  <dd>$300,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1364329553-ph-en-alquiler-6-dormitorios-en-suite-2-cocinas-terraza-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Alquiler De Amplio 4 Ambientes En Pleno Villa Crespo</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>90 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>100 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Crespo</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Camargo 732</dd>
+                  <dt>Precio:</dt>
+                  <dd>$170,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1399541484-alquiler-de-amplio-4-ambientes-en-pleno-villa-crespo-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Alquiler De Casa De 4 Ambientes En Pompeya</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>5</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>125 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>150 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Nueva Pompeya</dd>
+                  <dt>Direccion:</dt>
+                  <dd>La Constancia   2500</dd>
+                  <dt>Precio:</dt>
+                  <dd>$150,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://casa.mercadolibre.com.ar/MLA-1405778366-alquiler-de-casa-de-4-ambientes-en-pompeya-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departamento - Flores</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>6</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>168 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>170 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Flores</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Av Avellaneda al 2900</dd>
+                  <dt>Precio:</dt>
+                  <dd>$220,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1362278967-departamento-flores-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Ph En Alquiler - Nuñez - 4 Amb. &#43; Cochera &#43; Terraza &#43; Quincho</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>124 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>146 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Núñez</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Conesa 3191, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$350,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1366611083-ph-en-alquiler-nunez-4-amb-cochera-terraza-quincho-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Casa Con Local Destino Comercial. </h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>8</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>230 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>380 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Crespo</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Valentin Virasoro  1600</dd>
+                  <dt>Precio:</dt>
+                  <dd>$500,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://casa.mercadolibre.com.ar/MLA-1353311780-casa-con-local-destino-comercial-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Belgrano Chico - Full Amenities Y Vista A Rio</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>70 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>80 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Belgrano</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Husares al 2200</dd>
+                  <dt>Precio:</dt>
+                  <dd>$380,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1381103254-belgrano-chico-full-amenities-y-vista-a-rio-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departamento En Alquiler De 2 Dormitorios C/ Cochera En Caballito</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>110 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>116 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Caballito</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Virasoro al 900</dd>
+                  <dt>Precio:</dt>
+                  <dd>$325,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1362571815-departamento-en-alquiler-de-2-dormitorios-c-cochera-en-caballito-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Ph Uso Comercial - Con Vivienda - Multiples Usos </h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>6</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>170 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>295 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Núñez</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Avenida Crámer 3052, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$700,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1132251048-ph-uso-comercial-con-vivienda-multiples-usos-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Ph 1er Piso Por Escalera 5amb &#43; Terraza</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>5</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>130 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>170 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Caballito</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Condarco  3000 1°</dd>
+                  <dt>Precio:</dt>
+                  <dd>$260,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1366599263-ph-1er-piso-por-escalera-5amb-terraza-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Ph Alquiler Devoto Sin Expensas Gonzalez Terraza Propia</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>63 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>83 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Villa Devoto</dd>
+                  <dt>Direccion:</dt>
+                  <dd>GONZALEZ, JOAQUIN V. al 3200. Entre Varela y Simbron</dd>
+                  <dt>Precio:</dt>
+                  <dd>$250,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1406372602-ph-alquiler-devoto-sin-expensas-gonzalez-terraza-propia-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Casa 4 Ambientes Con Jardin Pileta Y Parrilla En Barracas Alquiler Temporario</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>180 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>311 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Barracas</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Osvaldo Cruz al 1900</dd>
+                  <dt>Precio:</dt>
+                  <dd>$180,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://casa.mercadolibre.com.ar/MLA-1366755123-casa-4-ambientes-con-jardin-pileta-y-parrilla-en-barracas-alquiler-temporario-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Casa  En Alquiler Uso Comercial/profesional</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>8</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>615 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>700 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Versalles</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Arregui al 6200</dd>
+                  <dt>Precio:</dt>
+                  <dd>$500,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://casa.mercadolibre.com.ar/MLA-1125632162-casa-en-alquiler-uso-comercialprofesional-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Av. Angel Gallardo 600 P4° - 4 Amb. Fte. C/bcón. Corrido. 2 Baños. Parque Centenario.</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>69 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>81 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Caballito</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Av. Angel Gallardo 600</dd>
+                  <dt>Precio:</dt>
+                  <dd>$200,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1403939936-av-angel-gallardo-600-p4-4-amb-fte-cbcon-corrido-2-banos-parque-centenario-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Caballito Ph Uso Comercial Exclusivo</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>80 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>140 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Caballito</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Méndez de Andes 878, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$160,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://inmueble.mercadolibre.com.ar/MLA-1199909901-caballito-ph-uso-comercial-exclusivo-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Alquiler Duplex 3 Amb. Boedo Oportunidad!!!</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>82 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>101 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Boedo</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Muñiz 1600</dd>
+                  <dt>Precio:</dt>
+                  <dd>$270,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1366974277-alquiler-duplex-3-amb-boedo-oportunidad-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Amplio 4 Amb En Alquiler - Zona Almagro</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>4</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>90 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>100 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Almagro</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Tte. Gral. Juan Domingo Perón 3545, Buenos Aires, Argentina</dd>
+                  <dt>Precio:</dt>
+                  <dd>$220,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1363377673-amplio-4-amb-en-alquiler-zona-almagro-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Departamento En  Caballito</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>0 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>116 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Caballito</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Jose Maria Moreno  al 400</dd>
+                  <dt>Precio:</dt>
+                  <dd>$150,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1359741825-departamento-en-caballito-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+         <div class="listing">
+            <h3 class="listing-title">Excelente Ph De 3 Ambientes C/ Patio En Flores</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>3</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>60 m²</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>70 m²</dd>
+                  <dt>Barrio:</dt>
+                  <dd>Flores</dd>
+                  <dt>Direccion:</dt>
+                  <dd>Av. Alberdi 2300</dd>
+                  <dt>Precio:</dt>
+                  <dd>$160,000.00</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href=https://departamento.mercadolibre.com.ar/MLA-1393676496-excelente-ph-de-3-ambientes-c-patio-en-flores-_JM target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      
+   </div>
 </body>
 </html>

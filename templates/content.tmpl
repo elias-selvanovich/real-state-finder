@@ -1,19 +1,29 @@
 {{define "content" -}}
 <div class="container">
-   <h3 class="title">Real State. Total Found {{.TotalCount}}</h3>
-   <div class="products-container">
-{{range .RealState}}
-    <div class="product">
-        <strong>{{.Title}}</strong>
-        Ambientes: {{.Ambients}} <br/>
-        Superficie Cubierta: {{.CoveredArea}} m2 <br/>
-        Superficie Total: {{.TotalArea}} m2 <br/>
-        Barrio: {{.Neighborhood}}<br/>
-        Direccion: {{.Address}}<br/>
-        Precio: {{.Price}}<br/>
-        Permalink: <a href={{.Permalink}}>{{.Permalink}}</a>
-    </div>
-{{end}}
+   <h1 class="title">Real Estate Listings - Total Found: {{.TotalCount}}</h1>
+   <div class="listings-container">
+      {{range .RealState}}
+         <div class="listing">
+            <h3 class="listing-title">{{.Title}}</h3>
+            <div class="listing-details">
+               <dl>
+                  <dt>Ambientes:</dt>
+                  <dd>{{.Ambients}}</dd>
+                  <dt>Superficie Cubierta:</dt>
+                  <dd>{{.CoveredArea}}</dd>
+                  <dt>Superficie Total:</dt>
+                  <dd>{{.TotalArea}}</dd>
+                  <dt>Barrio:</dt>
+                  <dd>{{.Neighborhood}}</dd>
+                  <dt>Direccion:</dt>
+                  <dd>{{.Address}}</dd>
+                  <dt>Precio:</dt>
+                  <dd>{{.Price}}</dd>
+                  <dt>Permalink:</dt>
+                  <dd><a href={{.Permalink}} target="_blank">View Listing</a></dd>
+               </dl>
+            </div>
+         </div>
+      {{end}}
    </div>
-</div>
 {{end}}

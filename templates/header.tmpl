@@ -6,45 +6,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rental Finder</title>
     <style>
-        body {
+         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-        }
-        .container {
+         }
+
+         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-        }
-        .title {
+         }
+
+         .title {
             color: #2c3e50;
             text-align: center;
             margin-bottom: 30px;
-        }
-        .products-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
+         }
+
+         .listings-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
-        }
-        .product {
+         }
+
+         .listing {
             background-color: #f1f1f1;
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-            text-align: center;
-            width: 300px;
-        }
-        .product strong {
+         }
+
+         .listing-title {
             font-size: 18px;
             color: #2c3e50;
-            display: block;
+            text-align: center;
             margin-bottom: 10px;
-        }
-        .product a {
+         }
+
+         .listing-details {
+            text-align: left;
+         }
+
+         .listing-details dt {
+            font-weight: bold;
+            color: #2c3e50;
+         }
+
+         .listing-details dd {
+            color: #34495e;
+            margin-left: 10px;
+            margin-bottom: 5px;
+         }
+
+         .listing-details dd a {
             color: #3498db;
             text-decoration: none;
-        }
+         }
+
     </style>
 </head>
 <body>

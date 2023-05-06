@@ -157,3 +157,8 @@ type SimpleRealState struct {
 	Price        string
 	Permalink    string
 }
+
+type HtmlRepresentation struct {
+	TotalCount int
+	RealState  []SimpleRealState
+}

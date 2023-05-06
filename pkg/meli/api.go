@@ -317,6 +317,11 @@ func (a *api) CmdGenerateHtml() error {
 		simpleRealState = append(simpleRealState, rs.ToSimpleRealState())
 	}
 
+	htmlData := entities.HtmlRepresentation{
+		TotalCount: len(simpleRealState),
+		RealState:  simpleRealState,
+	}
+
 	allFiles := []string{"content.tmpl", "footer.tmpl", "header.tmpl", "page.tmpl"}
 
 	var allPaths []string
@@ -328,7 +333,7 @@ func (a *api) CmdGenerateHtml() error {
 	templates := template.Must(template.New("").ParseFiles(allPaths...))
 
 	var processed bytes.Buffer
-	templates.ExecuteTemplate(&processed, "page", simpleRealState)
+	templates.ExecuteTemplate(&processed, "page", htmlData)
 
 	f, _ := os.Create("./index.html")
 	w := bufio.NewWriter(f)

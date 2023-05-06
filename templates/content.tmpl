@@ -1,19 +1,19 @@
 {{define "content" -}}
 <div class="container">
-   <h3 class="title"> Real state </h3>
+   <h3 class="title">Real State. Total Found {{.TotalCount}}</h3>
    <div class="products-container">
-{{range $index, $item := .}}
-    <div class="product" data-name="p-{{$index}}">
-        <strong>{{$item.Title}}</strong> <br/>
-        Ambientes: {{$item.Ambients}} <br/>
-        Superficie Cubierta: {{$item.CoveredArea}} m2 <br/>
-        Superficie Total: {{$item.TotalArea}} m2 <br/>
-        Barrio: {{$item.Neighborhood}}<br/>
-        Direccion: {{$item.Address}}<br/>
-        Precio: {{$item.Price}}<br/>
-        Permalink: <a href={{$item.Permalink}}>{{$item.Permalink}}</a>
+{{range .RealState}}
+    <div class="product">
+        <strong>{{.Title}}</strong>
+        Ambientes: {{.Ambients}} <br/>
+        Superficie Cubierta: {{.CoveredArea}} m2 <br/>
+        Superficie Total: {{.TotalArea}} m2 <br/>
+        Barrio: {{.Neighborhood}}<br/>
+        Direccion: {{.Address}}<br/>
+        Precio: {{.Price}}<br/>
+        Permalink: <a href={{.Permalink}}>{{.Permalink}}</a>
     </div>
-    <br/>
 {{end}}
+   </div>
 </div>
 {{end}}

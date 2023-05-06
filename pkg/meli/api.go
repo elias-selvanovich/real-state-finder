@@ -229,6 +229,7 @@ func (a *api) CmdSearch(offset int) error {
 		// If price is less than min price or greater than max price then drop it
 		if int(rs.Price) < a.minPrice || int(rs.Price) > a.maxPrice {
 			droppedPriceList = append(droppedPriceList, rs)
+			continue
 		}
 
 		if ambients < a.minAmbients {

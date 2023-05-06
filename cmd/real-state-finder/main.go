@@ -41,7 +41,7 @@ func main() {
 
 	printHeader()
 
-	api := meli.NewApi(accessToken, searchResultLimit, maxOffset, minPrice, maxPrice, minAmbients)
+	api := meli.NewApi(accessToken, searchResultLimit, maxOffset, minPrice, maxPrice, minAmbients, minTotalArea)
 
 	switch command {
 	case CommandSearch:

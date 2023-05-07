@@ -4,25 +4,30 @@
    <div class="listings-container">
       {{range .RealState}}
          <div class="listing">
-            <h3 class="listing-title">{{.Title}}</h3>
-            <div class="listing-details">
-               <dl>
-                  <dt>Ambientes:</dt>
-                  <dd>{{.Ambients}}</dd>
-                  <dt>Superficie Cubierta:</dt>
-                  <dd>{{.CoveredArea}}</dd>
-                  <dt>Superficie Total:</dt>
-                  <dd>{{.TotalArea}}</dd>
-                  <dt>Barrio:</dt>
-                  <dd>{{.Neighborhood}}</dd>
-                  <dt>Direccion:</dt>
-                  <dd>{{.Address}}</dd>
-                  <dt>Precio:</dt>
-                  <dd>{{.Price}}</dd>
-                  <dt>Permalink:</dt>
-                  <dd><a href={{.Permalink}} target="_blank">View Listing</a></dd>
-               </dl>
-            </div>
+            <a href="{{.Permalink}}" class="listing-link" target="_blank">
+                <div class="thumbnail-container">
+                <img src="{{.Thumbnail}}" alt="{{.Title}}" class="thumbnail">
+                </div>
+                <h3 class="listing-title">{{.Title}}</h3>
+                <div class="listing-details">
+                    <dl>
+                        <dt>Ambientes:</dt>
+                        <dd>{{.Ambients}}</dd>
+                        <dt>Superficie Cubierta:</dt>
+                        <dd>{{.CoveredArea}}</dd>
+                        <dt>Superficie Total:</dt>
+                        <dd>{{.TotalArea}}</dd>
+                        <dt>Barrio:</dt>
+                        <dd>{{.Neighborhood}}</dd>
+                        <dt>Direccion:</dt>
+                        <dd>{{.Address}}</dd>
+                        <dt>Precio:</dt>
+                        <dd>{{.Price}}</dd>
+                        <dt>Permalink:</dt>
+                        <dd><a href={{.Permalink}} target="_blank">View Listing</a></dd>
+                    </dl>
+                </div>
+            </a>
          </div>
       {{end}}
    </div>

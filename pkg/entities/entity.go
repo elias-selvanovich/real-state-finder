@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"strings"
 
 	"github.com/jedib0t/go-pretty/v6/table"
 	"github.com/leekchan/accounting"
@@ -13,6 +14,8 @@ const Rooms = "ROOMS"
 const CoveredArea = "COVERED_AREA"
 const TotalArea = "TOTAL_AREA"
 const CurrencyDollar = "USD"
+
+const thumbnailUrl = "https://http2.mlstatic.com/D_NQ_NP_$THUMBNAIL_ID-W.webp"
 
 type Country struct {
 	Name   string  `json:"name"`
@@ -42,14 +45,15 @@ type Paging struct {
 }
 
 type RealState struct {
-	Id         string      `json:"id"`
-	Title      string      `json:"title"`
-	CurrencyId string      `json:"currency_id"`
-	Price      float64     `json:"price"`
-	Condition  string      `json:"condition"`
-	Location   *Location   `json:"location"`
-	Permalink  string      `json:"permalink"`
-	Attributes []Attribute `json:"attributes"`
+	Id          string      `json:"id"`
+	Title       string      `json:"title"`
+	CurrencyId  string      `json:"currency_id"`
+	Price       float64     `json:"price"`
+	Condition   string      `json:"condition"`
+	Location    *Location   `json:"location"`
+	Permalink   string      `json:"permalink"`
+	ThumbnailId string      `json:"thumbnail_id"`
+	Attributes  []Attribute `json:"attributes"`
 }
 
 type Location struct {
@@ -144,6 +148,7 @@ func (rs *RealState) ToSimpleRealState() SimpleRealState {
 		Neighborhood: neighborhood,
 		Price:        ac.FormatMoney(rs.Price),
 		Permalink:    rs.Permalink,
+		Thumbnail:    strings.Replace(thumbnailUrl, "$THUMBNAIL_ID", rs.ThumbnailId, 1),
 	}
 }
 
@@ -156,6 +161,7 @@ type SimpleRealState struct {
 	Address      string
 	Price        string
 	Permalink    string
+	Thumbnail    string
 }
 
 type HtmlRepresentation struct {

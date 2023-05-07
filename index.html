@@ -43,11 +43,15 @@
             color: inherit;
          }
 
-         .listing-link:visited {
-            opacity: 0.5;
+         .listing-visited .listing-title {
+            color: #2c3e50;
          }
 
-         .listing-link:visited::before {
+         .listing-visited .listing-details {
+            color: #2c3e50;
+         }
+
+         .listing-visited::before {
             content: "Visited";
             position: absolute;
             top: 5px;
@@ -57,10 +61,6 @@
             font-size: 10px;
             padding: 2px 5px;
             border-radius: 3px;
-         }
-
-         .listing-link:visited .listing-title {
-            color: #2c3e50;
          }
 
          .listing-title {
@@ -1840,5 +1840,12 @@
          </div>
       
    </div>
+<script>
+    document.querySelectorAll('.listing-link').forEach(function (link) {
+        link.addEventListener('click', function (event) {
+            event.target.closest('.listing').classList.add('listing-visited');
+        });
+    });
+    </script>
 </body>
 </html>

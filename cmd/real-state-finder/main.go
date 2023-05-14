@@ -19,10 +19,10 @@ func main() {
 	searchResultLimitFlag := flag.Int("search-result-limit", 2, "Limit of the search result results")
 	commandFlag := flag.String("command", "search", "Type of command. Available options: search / print")
 	maxOffsetFlag := flag.Int("max-offset", 5, "Maximum offset to search")
-	minPriceFlag := flag.Int("min-price", 150000, "Min Price to search")
-	maxPriceFlag := flag.Int("max-price", 250000, "Max Price to search")
+	minPriceFlag := flag.Int("min-price", 180000, "Min Price to search")
+	maxPriceFlag := flag.Int("max-price", 280000, "Max Price to search")
 	minAmbientsFlag := flag.Int("min-ambients", 3, "Min Ambients to search")
-	minTotalAreaFlag := flag.Int("min-total-area", 70, "Min Total Area to search")
+	minTotalAreaFlag := flag.Int("min-total-area", 75, "Min Total Area to search")
 
 	flag.Parse()
 

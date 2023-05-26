@@ -167,4 +167,5 @@ type SimpleRealState struct {
 type HtmlRepresentation struct {
 	TotalCount int
 	RealState  []SimpleRealState
+	Timestamp  string
 }

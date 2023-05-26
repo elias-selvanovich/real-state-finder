@@ -1,6 +1,7 @@
 {{define "content" -}}
 <div class="container">
    <h1 class="title">Real Estate Listings - Total Found: {{.TotalCount}}</h1>
+   <h2 class="title">Execution date: {{.Timestamp}}</h2>
    <div class="listings-container">
       {{range .RealState}}
          <div class="listing">

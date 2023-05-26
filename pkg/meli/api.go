@@ -321,6 +321,7 @@ func (a *api) CmdGenerateHtml() error {
 	htmlData := entities.HtmlRepresentation{
 		TotalCount: len(simpleRealState),
 		RealState:  simpleRealState,
+		Timestamp:  time.Now().String(),
 	}
 
 	allFiles := []string{"content.tmpl", "footer.tmpl", "header.tmpl", "page.tmpl"}

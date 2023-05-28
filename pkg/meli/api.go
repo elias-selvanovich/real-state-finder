@@ -25,6 +25,7 @@ const droppedDueToUsdFile = "dropped_usd.json"
 const droppedDueToAmbientsFile = "dropped_ambients.json"
 const droppedDueToPriceFile = "dropped_price.json"
 const droppedDueToTotalAreaFile = "dropped_total_area.json"
+const droppedDueToWrongNeighborhoodMF = "dropped_wrong_neighborhood_mf.json"
 
 // Consts for SearchAPI
 const (
@@ -41,7 +42,7 @@ type Api interface {
 	GetCountry(countryId string) (*entities.Country, error)
 	GetState(stateId string) (*entities.State, error)
 	GetRealState(offset int) ([]entities.RealState, error)
-	CmdSearch(offset int) error
+	CmdSearch(offset int, filterNeighborhood string) error
 	CmdRead() error
 	CmdGenerateHtml() error
 }
@@ -203,8 +204,8 @@ func (a *api) doRequest(uri string) ([]byte, error) {
 	return bArr, nil
 }
 
-func (a *api) CmdSearch(offset int) error {
-	var droppedUsdList, droppedAmbientsList, droppedPriceList, droppedTotalAreaList, realStateList []entities.RealState
+func (a *api) CmdSearch(offset int, filterNeighborhood string) error {
+	var droppedUsdList, droppedAmbientsList, droppedPriceList, droppedTotalAreaList, droppedFilterNeighbor, realStateList []entities.RealState
 
 	realStates, err := a.GetRealState(0) // Start the recursive function from 0
 	fmt.Println(fmt.Sprintf("Found %d results", len(realStates)))
@@ -242,6 +243,13 @@ func (a *api) CmdSearch(offset int) error {
 			continue
 		}
 
+		if filterNeighborhood != "" {
+			if rs.Location.Neighborhood.Name != filterNeighborhood {
+				droppedFilterNeighbor = append(droppedFilterNeighbor, rs)
+				continue
+			}
+		}
+
 		realStateList = append(realStateList, rs)
 
 		rs.Print()
@@ -260,6 +268,7 @@ func (a *api) CmdSearch(offset int) error {
 	saveToFile(droppedDueToAmbientsFile, droppedAmbientsList)
 	saveToFile(droppedDueToPriceFile, droppedPriceList)
 	saveToFile(droppedDueToTotalAreaFile, droppedTotalAreaList)
+	saveToFile(droppedDueToWrongNeighborhoodMF, droppedFilterNeighbor)
 
 	return nil
 }

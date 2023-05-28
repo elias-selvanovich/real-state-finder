@@ -19,10 +19,11 @@ func main() {
 	searchResultLimitFlag := flag.Int("search-result-limit", 2, "Limit of the search result results")
 	commandFlag := flag.String("command", "search", "Type of command. Available options: search / print")
 	maxOffsetFlag := flag.Int("max-offset", 5, "Maximum offset to search")
-	minPriceFlag := flag.Int("min-price", 180000, "Min Price to search")
+	minPriceFlag := flag.Int("min-price", 120000, "Min Price to search")
 	maxPriceFlag := flag.Int("max-price", 280000, "Max Price to search")
 	minAmbientsFlag := flag.Int("min-ambients", 3, "Min Ambients to search")
 	minTotalAreaFlag := flag.Int("min-total-area", 75, "Min Total Area to search")
+	filterNeighborhoodFlag := flag.String("filter-neighborhood", "", "Neighborhood to filter")
 
 	flag.Parse()
 
@@ -34,6 +35,7 @@ func main() {
 	maxPrice := *maxPriceFlag
 	minAmbients := *minAmbientsFlag
 	minTotalArea := *minTotalAreaFlag
+	filterNeighborhood := *filterNeighborhoodFlag
 
 	if accessToken == "" {
 		panic("access token can't be empty")
@@ -45,7 +47,7 @@ func main() {
 
 	switch command {
 	case CommandSearch:
-		err := api.CmdSearch(0)
+		err := api.CmdSearch(0, filterNeighborhood)
 		if err != nil {
 			panic(err)
 		}

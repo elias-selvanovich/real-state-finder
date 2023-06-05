@@ -84,6 +84,12 @@ type AttributeValue struct {
 	Name string `json:"name"`
 }
 
+type ByPrice []RealState
+
+func (a ByPrice) Len() int           { return len(a) }
+func (a ByPrice) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+func (a ByPrice) Less(i, j int) bool { return a[i].Price > a[j].Price }
+
 func (rs *RealState) GetValueStruct(attrName string) float64 {
 	for _, attr := range rs.Attributes {
 		if attr.Id == attrName && attr.ValueStruct != nil {

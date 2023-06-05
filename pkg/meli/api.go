@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"os"
 	"real-state-finder/pkg/entities"
+	"sort"
 	"strconv"
 	"strings"
 	"time"
@@ -322,6 +323,8 @@ func (a *api) CmdGenerateHtml() error {
 	if err != nil {
 		return err
 	}
+
+	sort.Sort(entities.ByPrice(realStateList))
 
 	for _, rs := range realStateList {
 		simpleRealState = append(simpleRealState, rs.ToSimpleRealState())

@@ -20,7 +20,7 @@ func main() {
 	commandFlag := flag.String("command", "search", "Type of command. Available options: search / print")
 	maxOffsetFlag := flag.Int("max-offset", 5, "Maximum offset to search")
 	minPriceFlag := flag.Int("min-price", 120000, "Min Price to search")
-	maxPriceFlag := flag.Int("max-price", 280000, "Max Price to search")
+	maxPriceFlag := flag.Int("max-price", 380000, "Max Price to search")
 	minAmbientsFlag := flag.Int("min-ambients", 3, "Min Ambients to search")
 	minTotalAreaFlag := flag.Int("min-total-area", 75, "Min Total Area to search")
 	filterNeighborhoodFlag := flag.String("filter-neighborhood", "", "Neighborhood to filter")

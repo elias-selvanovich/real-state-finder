@@ -46,6 +46,7 @@ type Api interface {
 	CmdSearch(offset int, filterNeighborhood string) error
 	CmdRead() error
 	CmdGenerateHtml() error
+	CmdInitCache() error
 }
 
 type api struct {
@@ -333,7 +334,7 @@ func (a *api) CmdGenerateHtml() error {
 	htmlData := entities.HtmlRepresentation{
 		TotalCount: len(simpleRealState),
 		RealState:  simpleRealState,
-		Timestamp:  time.Now().String(),
+		Timestamp:  time.Now().Format("Monday, 02 Jan 2006 15:04:05"),
 	}
 
 	allFiles := []string{"content.tmpl", "footer.tmpl", "header.tmpl", "page.tmpl"}
@@ -353,5 +354,9 @@ func (a *api) CmdGenerateHtml() error {
 	w := bufio.NewWriter(f)
 	w.WriteString(string(processed.Bytes()))
 	w.Flush()
+	return nil
+}
+
+func (a *api) CmdInitCache() error {
 	return nil
 }

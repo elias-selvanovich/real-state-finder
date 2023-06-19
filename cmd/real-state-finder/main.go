@@ -12,6 +12,7 @@ import (
 const CommandSearch = "search"
 const CommandRead = "read"
 const CommandGenerateHtml = "generate-html"
+const CommandInitCache = "init-cache"
 
 func main() {
 
@@ -22,7 +23,7 @@ func main() {
 	minPriceFlag := flag.Int("min-price", 120000, "Min Price to search")
 	maxPriceFlag := flag.Int("max-price", 380000, "Max Price to search")
 	minAmbientsFlag := flag.Int("min-ambients", 3, "Min Ambients to search")
-	minTotalAreaFlag := flag.Int("min-total-area", 75, "Min Total Area to search")
+	minTotalAreaFlag := flag.Int("min-total-area", 70, "Min Total Area to search")
 	filterNeighborhoodFlag := flag.String("filter-neighborhood", "", "Neighborhood to filter")
 
 	flag.Parse()

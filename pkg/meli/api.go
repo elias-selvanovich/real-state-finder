@@ -263,6 +263,9 @@ func (a *api) CmdSearch(offset int, filterNeighborhood string) error {
 	fmt.Println(fmt.Sprintf("Dropped %d due to USD, %d due to less than desired ambients, %d due to price, %d due to TotalArea out of %d found.", len(droppedUsdList), len(droppedAmbientsList), len(droppedPriceList), len(droppedTotalAreaList), len(realStates)))
 	fmt.Println()
 	fmt.Println()
+	fmt.Println(fmt.Sprintf("Found %d appartments out of %d", len(realStateList), len(realStates)))
+	fmt.Println()
+	fmt.Println()
 
 	fmt.Println(fmt.Print("Saving files..."))
 	saveToFile(realStateFile, realStateList)

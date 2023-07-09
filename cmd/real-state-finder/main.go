@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"real-state-finder/pkg/entities"
 	"real-state-finder/pkg/meli"
+	"real-state-finder/pkg/storage"
 )
 
 const CommandSearch = "search"
@@ -15,16 +16,16 @@ const CommandGenerateHtml = "generate-html"
 const CommandInitCache = "init-cache"
 
 func main() {
-
 	accessTokenFlag := flag.String("access-token", "", "access token for meli api")
 	searchResultLimitFlag := flag.Int("search-result-limit", 2, "Limit of the search result results")
 	commandFlag := flag.String("command", "search", "Type of command. Available options: search / print")
 	maxOffsetFlag := flag.Int("max-offset", 5, "Maximum offset to search")
 	minPriceFlag := flag.Int("min-price", 120000, "Min Price to search")
-	maxPriceFlag := flag.Int("max-price", 400000, "Max Price to search")
+	maxPriceFlag := flag.Int("max-price", 450000, "Max Price to search")
 	minAmbientsFlag := flag.Int("min-ambients", 3, "Min Ambients to search")
 	minTotalAreaFlag := flag.Int("min-total-area", 70, "Min Total Area to search")
 	filterNeighborhoodFlag := flag.String("filter-neighborhood", "", "Neighborhood to filter")
+	storageFilePathflag := flag.String("storage-file-path", "storage.json", "Storage file path")
 
 	flag.Parse()
 
@@ -37,14 +38,28 @@ func main() {
 	minAmbients := *minAmbientsFlag
 	minTotalArea := *minTotalAreaFlag
 	filterNeighborhood := *filterNeighborhoodFlag
+	storageFilePath := *storageFilePathflag
 
-	if accessToken == "" {
+	if accessToken == "" && command == "search" {
 		panic("access token can't be empty")
 	}
 
 	printHeader()
 
-	api := meli.NewApi(accessToken, searchResultLimit, maxOffset, minPrice, maxPrice, minAmbients, minTotalArea)
+	// init storage
+	storage := storage.NewStorage(storageFilePath)
+	fmt.Println("Loading storage...")
+	err := storage.Load()
+	if err != nil {
+		fmt.Println("Couldn't load storage")
+		panic(err)
+	}
+
+	fmt.Println("Storage loaded...")
+
+	fmt.Println(fmt.Sprintf("Found %d real states stored", len(storage.GetList())))
+
+	api := meli.NewApi(accessToken, searchResultLimit, maxOffset, minPrice, maxPrice, minAmbients, minTotalArea, storage)
 
 	switch command {
 	case CommandSearch:
@@ -66,6 +81,9 @@ func main() {
 		}
 		break
 	}
+
+	storage.Dump()
+	fmt.Println("Storage dumped to disk")
 }
 
 func printHeader() {

@@ -5,6 +5,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/jedib0t/go-pretty/v6/table"
 	"github.com/leekchan/accounting"
@@ -54,6 +55,8 @@ type RealState struct {
 	Permalink   string      `json:"permalink"`
 	ThumbnailId string      `json:"thumbnail_id"`
 	Attributes  []Attribute `json:"attributes"`
+	CreatedDate time.Time   `json:"created_date"`
+	IsNew       bool        `json:"is_new"`
 }
 
 type Location struct {
@@ -155,6 +158,8 @@ func (rs *RealState) ToSimpleRealState() SimpleRealState {
 		Price:        ac.FormatMoney(rs.Price),
 		Permalink:    rs.Permalink,
 		Thumbnail:    strings.Replace(thumbnailUrl, "$THUMBNAIL_ID", rs.ThumbnailId, 1),
+		CreatedDate:  rs.CreatedDate.Format("Monday, 02 Jan 2006 15:04:05"),
+		IsNew:        rs.IsNew,
 	}
 }
 
@@ -168,6 +173,8 @@ type SimpleRealState struct {
 	Price        string
 	Permalink    string
 	Thumbnail    string
+	CreatedDate  string
+	IsNew        bool
 }
 
 type HtmlRepresentation struct {

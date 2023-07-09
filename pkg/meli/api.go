@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"os"
 	"real-state-finder/pkg/entities"
+	"real-state-finder/pkg/storage"
 	"sort"
 	"strconv"
 	"strings"
@@ -57,10 +58,11 @@ type api struct {
 	maxPrice          int
 	minAmbients       int
 	minTotalArea      int
+	storage           storage.Storage
 }
 
-func NewApi(a string, l int, m int, minP int, maxP int, minA int, minT int) Api {
-	return &api{a, l, m, minP, maxP, minA, minT}
+func NewApi(a string, l int, m int, minP int, maxP int, minA int, minT int, s storage.Storage) Api {
+	return &api{a, l, m, minP, maxP, minA, minT, s}
 }
 
 func (a *api) GetCountry(countryId string) (*entities.Country, error) {
@@ -209,6 +211,8 @@ func (a *api) doRequest(uri string) ([]byte, error) {
 func (a *api) CmdSearch(offset int, filterNeighborhood string) error {
 	var droppedUsdList, droppedAmbientsList, droppedPriceList, droppedTotalAreaList, droppedFilterNeighbor, realStateList []entities.RealState
 
+	a.storage.ResetNew()
+
 	realStates, err := a.GetRealState(0) // Start the recursive function from 0
 	fmt.Println(fmt.Sprintf("Found %d results", len(realStates)))
 	if err != nil {
@@ -252,9 +256,17 @@ func (a *api) CmdSearch(offset int, filterNeighborhood string) error {
 			}
 		}
 
-		realStateList = append(realStateList, rs)
+		fmt.Println(fmt.Sprintf("About to store real state with id %s", rs.Id))
+		if !a.storage.Exists(rs.Id) {
+			fmt.Println(fmt.Sprintf("Real state with id %s didn't exist, storing it", rs.Id))
+			rs.IsNew = true
+			rs.CreatedDate = time.Now()
+			a.storage.Save(rs)
+			rs.Print()
+		}
 
-		rs.Print()
+		realStateList = append(realStateList, rs)
+		fmt.Println(fmt.Sprintf("Didn't store because real state with id %s already exists in storage", rs.Id))
 
 	}
 
@@ -268,7 +280,7 @@ func (a *api) CmdSearch(offset int, filterNeighborhood string) error {
 	fmt.Println()
 
 	fmt.Println(fmt.Print("Saving files..."))
-	saveToFile(realStateFile, realStateList)
+	saveToFile(realStateFile, a.storage.GetList())
 	saveToFile(droppedDueToUsdFile, droppedUsdList)
 	saveToFile(droppedDueToAmbientsFile, droppedAmbientsList)
 	saveToFile(droppedDueToPriceFile, droppedPriceList)

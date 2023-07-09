@@ -6,12 +6,19 @@
       {{range .RealState}}
          <div class="listing">
             <a href="{{.Permalink}}" class="listing-link" target="_blank">
+                {{if .IsNew}}
+                <div class="is-new">
+                    Nuevo
+                </div>
+                {{end}}
                 <div class="thumbnail-container">
                     <img src="{{.Thumbnail}}" alt="{{.Title}}" class="thumbnail" />
                 </div>
                 <h3 class="listing-title">{{.Title}}</h3>
                 <div class="listing-details">
                     <dl>
+                        <dt>Is New:</dt>
+                        <dd>{{.IsNew}}</dd>
                         <dt>Ambientes:</dt>
                         <dd>{{.Ambients}}</dd>
                         <dt>Superficie Cubierta:</dt>
@@ -26,6 +33,8 @@
                         <dd>{{.Price}}</dd>
                         <dt>Permalink:</dt>
                         <dd><a href={{.Permalink}} target="_blank">View Listing</a></dd>
+                        <dt>Fecha Agregado:</dt>
+                        <dd>{{.CreatedDate}}</dd>
                     </dl>
                 </div>
             </a>
